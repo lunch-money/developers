@@ -7,7 +7,7 @@ id               | number  | Unique identifier for transaction
 date             | string  | Date of transaction in ISO 8601 format
 payee            | string  | Name of payee If recurring_id is not null, this field will show the payee of associated recurring expense instead of the original transaction payee
 amount           | string  | Amount of the transaction in numeric format to 4 decimal places
-currency         | string  | Three-letter lowercase currency code of the transaction
+currency         | string  | Three-letter lowercase currency code of the transaction in ISO 4217 format
 notes            | string  | User-entered transaction notes If recurring_id is not null, this field will be description of associated recurring expense
 category_id      | number  | Unique identifier of associated category (see Categories)
 asset_id         | number  | Unique identifier of associated manually-managed account (see Assets) Note: plaid_account_id and asset_id cannot both exist for a transaction
@@ -168,7 +168,7 @@ date         | string                          | true     | Must be in ISO 8601 
 amount       | number/string                   | true     | Numeric value of amount. i.e. $4.25 should be denoted as 4.25.
 category_id  | number                          | false    | Unique identifier for associated category_id. Category must be associated with the same account and must not be a category group.
 payee        | string                          | false    | Max 140 characters
-currency     | string                          | false    | Three-letter lowercase currency code must exist in our database. Defaults to user account's primary currency.
+currency     | string                          | false    | Three-letter lowercase currency code in ISO 4217 format. The code sent must exist in our database. Defaults to user account's primary currency.
 asset_id     | number                          | false    | Unique identifier for associated asset (manually-managed account). Asset must be associated with the same account.
 recurring_id | number                          | false    | Unique identifier for associated recurring expense. Recurring expense must be associated with the same account.
 notes        | string                          | false    | Max 350 characters

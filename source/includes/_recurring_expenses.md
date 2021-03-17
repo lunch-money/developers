@@ -9,7 +9,7 @@ end_date         | string | Denotes when recurring expense stops occurring in IS
 cadence          | string | One of:<br> <ul> <li>monthly</li> <li>twice a month</li> <li>once a week</li> <li>every 3 months</li> <li>every 3 months</li> <li>every 4 months</li> <li>twice a year</li> <li>yearly</li></ul>
 payee            | string | Payee of the recurring expense
 amount           | number | Amount of the recurring expense in numeric format to 4 decimal places
-currency         | string | Three-letter lowercase currency code for the recurring expense
+currency         | string | Three-letter lowercase currency code for the recurring expense in ISO 4217 format
 description      | string | If any, represents the user-entered description of the recurring expense
 billing_date     | string | Expected billing date for this recurring expense for this month in ISO 8601 format
 type             | string | This can be one of two values: <br><ul> <li>cleared: The recurring expense has been reviewed by the user</li> <li>suggested: The recurring expense is suggested by the system; the user has yet to review/clear it</li> </ul>

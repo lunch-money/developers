@@ -9,7 +9,7 @@ subtype_name        | string | Optional account subtype. Examples include:<br><u
 name                | string | Name of the asset
 balance             | string | Current balance of the account in numeric format to 4 decimal places
 balance_as_of       | string | Date/time the balance was last updated in ISO 8601 extended format
-currency            | string | Three-letter lowercase currency code of the balance
+currency            | string | Three-letter lowercase currency code of the balance in ISO 4217 format
 institution_name    | string | Name of institution holding the account
 created_at          | string | Date/time the asset was created in ISO 8601 extended format
 
@@ -115,7 +115,7 @@ subtype_name     | string | false    | -       | Max 25 characters
 name             | string | false    | -       | Max 45 characters
 balance          | string | false    | -       | Numeric value of the current balance of the account. Do not include any special characters aside from a decimal point!
 balance_as_of    | string | false    | -       | Has no effect if balance is not defined. If balance is defined, but balance_as_of is not supplied or is invalid, current timestamp will be used.
-currency         | string | false    | -       | Three-letter lowercase currency code must exist in our database. Defaults to asset's currency.
+currency         | string | false    | -       | Three-letter lowercase currency in ISO 4217 format. The code sent must exist in our database. Defaults to asset's currency.
 institution_name | string | false    | -       | Max 50 characters
 
 ---

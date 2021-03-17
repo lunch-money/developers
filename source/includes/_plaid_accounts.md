@@ -13,7 +13,7 @@ institution_name    | string | Name of institution associated with account. This
 status              | string | Denotes the current status of the account within Lunch Money. Must be one of:<br><ul> <li>active: Account is active and in good state</li> <li>inactive: Account marked inactive from user. No transactions fetched or balance update for this account.</li> <li>relink: Account needs to be relinked with Plaid.</li> <li>syncing: Account is awaiting first import of transactions</li> <li>error: Account is in error with Plaid</li> <li>not found: Account is in error with Plaid</li> <li>not supported: Account is in error with Plaid</li><ul>
 last_import         | string | Date of last imported transaction in ISO 8601 extended format (not necessarily date of last attempted import)
 balance             | string | Current balance of the account in numeric format to 4 decimal places. This field is set by Plaid and cannot be altered
-currency            | string | Currency of account balance. This field is set by Plaid and cannot be altered
+currency            | string | Currency of account balance in ISO 4217 format. This field is set by Plaid and cannot be altered
 balance_last_update | string | Date balance was last updated in ISO 8601 extended format. This field is set by Plaid and cannot be altered
 limit               | number | Optional credit limit of the account. This field is set by Plaid and cannot be altered
 
