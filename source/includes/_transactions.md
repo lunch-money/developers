@@ -136,7 +136,7 @@ Returns a single Transaction object
 
 Parameter         | Type    | Required | Default | Description
 ---------         | ----    | -------- | ------- | -----------
-debit_as_negative | boolean | false    |  false  | Filter by tag. Only accepts IDs, not names.
+debit_as_negative | boolean | false    |  false  | Pass in true if you’d like expenses to be returned as negative amounts and credits as positive amounts. Defaults to false.
 
 ## Insert Transactions
 
