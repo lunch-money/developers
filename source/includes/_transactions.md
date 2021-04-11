@@ -72,11 +72,26 @@ Use this endpoint to retrieve all transactions between a date range.
 { "error": "Both start_date and end_date must be specified." }
 ```
 
-Returns list of Transaction objects. If no query parameters are set, this endpoint will return transactions for the current calendar month (see start_date and end_date)
+Returns list of Transaction objects. If no query parameters are set, this endpoint will return transactions for the current calendar month (see `start_date` and `end_date`)
 
 ### HTTP Request
 
 `GET https://dev.lunchmoney.app/v1/transactions`
+
+### Query Parameters
+
+| Parameter         | Type    | Required | Default | Description                                                                                                                                                                                                                                                                  |
+| ----------------- | ------- | -------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| tag_id            | number  | false    | -       | Filter by tag. Only accepts IDs, not names.
+| recurring_id      | number  | false    | -       | Filter by recurring expense
+| plaid_account_id  | number  | false    | -       | Filter by Plaid account
+| category_id       | number  | false    | -       | Filter by category. Will also match category groups.
+| asset_id          | number  | false    | -       | Filter by asset
+| offset            | number  | false    | -       | Sets the offset for the records returned
+| limit             | number  | false    | -       | Sets the maximum number of records to return. **Note:** The server will not respond with any indication that there are more records to be returned. Please check the response length to determine if you should make another call with an offset to fetch more transactions.
+| start_date        | string  | false    | -       | Denotes the beginning of the time period to fetch transactions for. Defaults to beginning of current month. Required if end_date exists. Format: YYYY-MM-DD.
+| end_date          | string  | false    | -       | Denotes the end of the time period you'd like to get transactions for. Defaults to end of current month. Required if start_date exists. Format: YYYY-MM-DD.
+| debit_as_negative | boolean | false    | false   | Pass in true if you’d like expenses to be returned as negative amounts and credits as positive amounts. Defaults to false.
 
 ## Get Single Transaction
 
