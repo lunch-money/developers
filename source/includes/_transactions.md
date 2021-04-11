@@ -152,7 +152,7 @@ Use this endpoint to insert many transactions at once.
 
 `POST https://dev.lunchmoney.app/v1/transactions`
 
-### Query Parameters
+### Body Parameters
 Parameter           | Type    | Required | Default | Description
 ---------           | ----    | -------- | ------- | -----------
 transactions        | array   | true     | -       | List of transactions to insert (see below)
