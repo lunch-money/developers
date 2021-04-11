@@ -79,7 +79,7 @@ Use this endpoint to get a list of all manually-managed assets associated with t
 
 ## Update Asset
 
-Use this endpoint to update a single transaction. You may also use this to split an existing transaction.
+Use this endpoint to update a single asset.
 
 > Example 200 Response
 
