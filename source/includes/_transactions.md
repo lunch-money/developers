@@ -197,7 +197,7 @@ Use this endpoint to update a single transaction. You may also use this to split
 
 > Example 200 Response
 >
-> Upon success, IDs of inserted transactions will be returned in an array.
+> If a split was part of the request, an array of newly-created split transactions will be returned.
 
 ```json
 {
