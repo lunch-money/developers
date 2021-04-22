@@ -172,6 +172,7 @@ Parameter           | Type    | Required | Default | Description
 ---------           | ----    | -------- | ------- | -----------
 transactions        | array   | true     | -       | List of transactions to insert (see below)
 apply_rules         | boolean | false    | false   | If true, will apply account’s existing rules to the inserted transactions. Defaults to false.
+skip_duplicates     | boolean | false    | false   | If true, the system will automatically dedupe based on transaction date, payee and amount. Note that deduping by external_id will occur regardless of this flag.
 check_for_recurring | boolean | false    | false   | If true, will check new transactions for occurrences of new monthly expenses. Defaults to false.
 debit_as_negative   | boolean | false    | false   | If true, will assume negative amount values denote expenses and positive amount values denote credits. Defaults to false.
 

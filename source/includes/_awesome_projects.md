@@ -10,6 +10,7 @@ Source                                                               | Made by  
 [Delta](https://www.delta.exchange) cryptocurrency portfolio balance | [@markjongkind](https://twitter.com/markjongkind)   | [Link](https://github.com/markjongkind/delta-to-lunchmoney)
 [Amazon](https://amazon.com) transaction notes                       | [@samwelnella](https://github.com/samwelnella)      | [Link](https://github.com/samwelnella/amazon-transactions-to-lunchmoney)
 [Investing.com](https://investing.com) security prices               | [@DouweM](https://twitter.com/DouweM)                | [Link](https://gitlab.com/DouweM/investing-to-lunch-money)
+[Venmo](https://venmo.com) emails to transactions                    | [@billycao](https://github.com/billycao)             | [Link](https://github.com/billycao/venmo-to-lunch-money)
 
 ## API clients
 
