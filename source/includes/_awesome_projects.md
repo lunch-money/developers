@@ -11,7 +11,8 @@ Source                                                               | Made by  
 [Amazon](https://amazon.com) transaction notes                       | [@samwelnella](https://github.com/samwelnella)      | [Link](https://github.com/samwelnella/amazon-transactions-to-lunchmoney)
 [Investing.com](https://investing.com) security prices               | [@DouweM](https://twitter.com/DouweM)                | [Link](https://gitlab.com/DouweM/investing-to-lunch-money)
 [Venmo](https://venmo.com) emails to transactions                    | [@billycao](https://github.com/billycao)             | [Link](https://github.com/billycao/venmo-to-lunch-money)
-Sync [Wealthsimple](https://wealthsimple.com) Invest, Trade, and Cash account balances                    | [@jamiepinheiro](https://twitter.com/jamiepinheiro)             | [Link](https://github.com/jamiepinheiro/lunch_money_wealthsimple_bridge)
+[Wealthsimple](https://wealthsimple.com) Invest, Trade, and Cash balances                    | [@jamiepinheiro](https://twitter.com/jamiepinheiro)             | [Link](https://github.com/jamiepinheiro/lunch_money_wealthsimple_bridge)
+
 
 ## API clients
 
@@ -27,7 +28,7 @@ Description                                                                     
 React Native app (WIP)                                                          | [@yuanhaochiang](https://twitter.com/yuanhaochiang) | [Link](https://github.com/yuanworks/bento-money)
 [Singer](http://singer.io) target to sync asset balances from arbitrary sources | [@DouweM](https://twitter.com/DouweM)                | [Link](https://gitlab.com/DouweM/target-lunch-money)
 
-
+iOS shortcut for categorizing transactions                    | [@jamiepinheiro](https://twitter.com/jamiepinheiro)             | [Link](https://github.com/jamiepinheiro/lunch_money_categorize_transaction_shortcut)
 
 <aside class="notice">
 Did you create something with the Lunch Money API? Let us know and we'll add it to this list!
