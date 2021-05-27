@@ -1,64 +1,6 @@
 # Budget
 
 ## Budget Object
-{
-        "category_name": "Food",
-        "category_id": 34476,
-        "category_group_name": null,
-        "group_id": null,
-        "is_group": true,
-        "is_income": false,
-        "exclude_from_budget": false,
-        "exclude_from_totals": false,
-        "data": {
-            "2020-03-01": {
-                "budget_month": "2020-03-01",
-                "budget_to_base": 1110,
-                "budget_amount": 1110,
-                "budget_currency": "usd",
-                "spending_to_base": 873.4799999999999,
-                "num_transactions": 0
-            },
-            "2020-01-01": {
-                "spending_to_base": 1199.9
-            },
-            "2020-02-01": {
-                "spending_to_base": 1190.56
-            },
-            "2020-04-01": {
-                "spending_to_base": 1165.7700000000002
-            },
-            "2020-05-01": {
-                "spending_to_base": 1236.4400000000003
-            },
-            "2020-06-01": {
-                "spending_to_base": 1336.3900000000003
-            },
-            "2020-12-01": {
-                "spending_to_base": 1364.7800000000002
-            },
-            "2020-11-01": {
-                "spending_to_base": 1481.0600000000002
-            },
-            "2020-10-01": {
-                "spending_to_base": 1639.94
-            },
-            "2020-09-01": {
-                "spending_to_base": 373.51000000000016
-            },
-            "2020-08-01": {
-                "spending_to_base": 1387.14
-            },
-            "2020-07-01": {
-                "spending_to_base": 1720.4699999999996
-            },
-            "2021-01-01": {
-                "spending_to_base": 23.66
-            }
-        },
-        "order": 0
-    },
-
 
 Attribute Name      | Type   | Description
 ------------------- | ----   | -----------
@@ -155,45 +97,6 @@ Use this endpoint to get full details on the budgets for all categories between 
 
 ### HTTP Request
 
-`GET https://dev.lunchmoney.app/v1/crypto`
-
-## Update Manual Crypto Asset
-
-Use this endpoint to update a single manually-managed crypto asset (does not include assets received from syncing with your wallet/exchange/etc). These are denoted by `source: manual` from the GET call above.
-
-> Example 200 Response
-
-```json
-{
-    "id": 1,
-    "source": "manual",
-    "created_at": "2021-02-10T05:57:34.305Z",
-    "name": "Shiba Token",
-    "display_name": "SHIB",
-    "balance": "12.000000000000000000",
-    "currency": "SHIB",
-    "status": "active",
-    "institution_name": null
-}
-```
-
-> Example 400 Response
-
-```json
-{ "errors": [ "currency is invalid for crypto: ${requestBody.currency}. It may not be supported yet. Request to get it supported via the app or support@lunchmoney.app" ] }
-```
-
-### HTTP Request
-
-`PUT https://dev.lunchmoney.app/v1/crypto/manual/:id`
-
-### Body Parameters
-Parameter        | Type   | Required | Default | Description
----------        | ----   | -------- | ------- | -----------
-name             | string | false    | -       | Official or full name of the account. Max 45 characters
-display_name     | string | false    | -       | Display name for the account. Max 25 characters
-institution_name | string | false    | -       | Name of provider that holds the account. Max 50 characters
-balance          | number | false    | -       | Numeric value of the current balance of the account. Do not include any special characters aside from a decimal point!
-currency         | string | false    | -       | Cryptocurrency that is supported for manual tracking in our database
+`GET https://dev.lunchmoney.app/v1/budget`
 
 ---
