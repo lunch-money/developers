@@ -138,4 +138,28 @@ currency         | string | false    | -       | Currency for the budgeted amoun
 start_date       | string | false    | -       | Start date for the budget period. Lunch Money currently only supports monthly budgets, so your date must always be the start of a month (eg. 2021-04-01)
 category_id      | number | false    | -       | Unique identifier for the category
 
+## Remove budget
+
+Use this endpoint to unset an existing budget for a particular category in a particular month.
+
+> Example 200 Response
+
+Returns true if operation was successful.
+
+> Example Error Response (sends as 200)
+
+```json
+{ "error": 'start_date must be a valid date in format YYYY-MM-01' }
+```
+
+### HTTP Request
+
+`DELETE https://dev.lunchmoney.app/v1/budgets`
+
+### Query Parameters
+Parameter        | Type   | Required | Default | Description
+---------        | ----   | -------- | ------- | -----------
+start_date       | string | false    | -       | Start date for the budget period. Lunch Money currently only supports monthly budgets, so your date must always be the start of a month (eg. 2021-04-01)
+category_id      | number | false    | -       | Unique identifier for the category
+
 ---
