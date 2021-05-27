@@ -4,13 +4,15 @@
 Attribute Name      | Type   | Description
 ------------------- | ----   | -----------
 id                  | number | Unique identifier for asset
-type_name           | string | Primary type of the account. Must be one of:<br><ul> <li>employee compensation</li> <li>cash</li> <li>vehicle</li> <li>loan</li> <li>cryptocurrency</li> <li>investment</li> <li>other</li> <li>credit</li> <li>real estate</li> </ul>
-subtype_name        | string | Optional account subtype. Examples include:<br><ul> <li>retirement</li> <li>checking</li> <li>savings</li> <li>prepaid credit card</li><ul>
+type_name           | string | Primary type of the asset. Must be one of:<br><ul> <li>employee compensation</li> <li>cash</li> <li>vehicle</li> <li>loan</li> <li>cryptocurrency</li> <li>investment</li> <li>other</li> <li>credit</li> <li>real estate</li> </ul>
+subtype_name        | string | Optional asset subtype. Examples include:<br><ul> <li>retirement</li> <li>checking</li> <li>savings</li> <li>prepaid credit card</li><ul>
 name                | string | Name of the asset
-balance             | string | Current balance of the account in numeric format to 4 decimal places
+display_name        | string | Display name of the asset (as set by user)
+balance             | string | Current balance of the asset in numeric format to 4 decimal places
 balance_as_of       | string | Date/time the balance was last updated in ISO 8601 extended format
+closed_on           | string | The date this asset was closed (optional)
 currency            | string | Three-letter lowercase currency code of the balance in ISO 4217 format
-institution_name    | string | Name of institution holding the account
+institution_name    | string | Name of institution holding the asset
 created_at          | string | Date/time the asset was created in ISO 8601 extended format
 
 ## Get All Assets
