@@ -151,7 +151,7 @@ true
 > Example Error Response (sends as 200)
 
 ```json
-{ "error": 'start_date must be a valid date in format YYYY-MM-01' }
+{ "error": "start_date must be a valid date in format YYYY-MM-01" }
 ```
 
 ### HTTP Request
