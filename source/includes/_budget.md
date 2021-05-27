@@ -99,4 +99,43 @@ Use this endpoint to get full details on the budgets for all categories between 
 
 `GET https://dev.lunchmoney.app/v1/budgets`
 
+## Upsert budget
+
+Use this endpoint to update an existing budget or insert a new budget for a particular category and date.
+
+Note: Lunch Money currently only supports monthly budgets, so your date must always be the start of a month (eg. 2021-04-01)
+
+> Example 200 Response
+
+If this is a sub-category, the response will include the updated category group's budget. This is because setting a sub-category may also update the category group's overall budget. 
+
+```json
+{
+    "category_group": {
+        "category_id": 34476,
+        "amount": 100,
+        "currency": "usd",
+        "start_date": "2021-06-01"
+    }
+}
+```
+
+> Example Error Response (sends as 200)
+
+```json
+{ "error": "Budget must be greater than or equal to the sum of sub-category budgets ($10.01)." }
+```
+
+### HTTP Request
+
+`PUT https://dev.lunchmoney.app/v1/budgets`
+
+### Body Parameters
+Parameter        | Type   | Required | Default | Description
+---------        | ----   | -------- | ------- | -----------
+amount           | number | false    | -       | Amount for budget
+currency         | string | false    | -       | Currency for the budgeted amount (optional). If empty, will default to your primary currency
+start_date       | string | false    | -       | Start date for the budget period. Lunch Money currently only supports monthly budgets, so your date must always be the start of a month (eg. 2021-04-01)
+category_id      | number | false    | -       | Unique identifier for the category
+
 ---
