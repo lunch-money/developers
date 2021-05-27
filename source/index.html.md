@@ -17,6 +17,7 @@ includes:
   - tags
   - assets
   - plaid_accounts
+  - crypto
   - appendix
 
 search: true
