@@ -16,7 +16,7 @@ institution_name    | string | Name of provider holding the asset
 created_at          | string | Date/time the asset was created in ISO 8601 extended format
 
 ## Get All Crypto
-Use this endpoint to get a list of all manually-managed assets associated with the user's account.
+Use this endpoint to get a list of all cryptocurrency assets associated with the user's account. Both crypto balances from synced and manual accounts will be returned.
 
 > Example 200 Response
 
@@ -24,7 +24,7 @@ Use this endpoint to get a list of all manually-managed assets associated with t
 {
     "crypto": [
         {
-            "id": 544,
+            "zabo_account_id": 544,
             "source": "synced",
             "created_at": "2020-07-27T11:53:02.722Z",
             "name": "Dogecoin",
@@ -55,7 +55,7 @@ Use this endpoint to get a list of all manually-managed assets associated with t
 
 `GET https://dev.lunchmoney.app/v1/crypto`
 
-## Update Asset
+## Update Manual Crypto Asset
 
 Use this endpoint to update a single manually-managed crypto asset (does not include assets received from syncing with your wallet/exchange/etc). These are denoted by `source: manual` from the GET call above.
 
