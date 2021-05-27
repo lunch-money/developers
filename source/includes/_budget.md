@@ -44,13 +44,13 @@ Use this endpoint to get full details on the budgets for all categories between 
         "exclude_from_totals": false,
         "data": {
             "2020-09-01": {
-                "spending_to_base": 373.51000000000016
+                "spending_to_base": 373.51
             },
             "2020-08-01": {
                 "spending_to_base": 1387.14
             },
             "2020-07-01": {
-                "spending_to_base": 1720.4699999999996
+                "spending_to_base": 1720.46
             },
         },
         "order": 0
@@ -97,6 +97,6 @@ Use this endpoint to get full details on the budgets for all categories between 
 
 ### HTTP Request
 
-`GET https://dev.lunchmoney.app/v1/budget`
+`GET https://dev.lunchmoney.app/v1/budgets`
 
 ---
