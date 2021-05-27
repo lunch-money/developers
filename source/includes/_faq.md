@@ -12,4 +12,8 @@ Check [here](#supported-currencies) for a list of all the currencies we currentl
 
 Awesome! Please share with us via email about what you built! If you are willing to share your code, we encourage you to open-source your tool/plug-in so others in the Lunch Money community can benefit and we'll add it to our [Awesome Projects](#awesome-projects) page.
 
+## Where can I get support?
+
+If you're a paying member of Lunch Money, [join our Slack community](https://my.lunchmoney.app/community) and chat with us in the `#_api` channel! For account-specific issues, email us at [support@lunchmoney.app](mailto:support@lunchmoney.app).
+
 ---

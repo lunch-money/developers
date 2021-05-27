@@ -11,12 +11,14 @@ includes:
   - awesome_projects
   - changelog
   - faq
-  - transactions
-  - recurring_expenses
   - categories
   - tags
+  - transactions
+  - recurring_expenses
+  - budget
   - assets
   - plaid_accounts
+  - crypto
   - appendix
 
 search: true
