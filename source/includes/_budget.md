@@ -144,7 +144,9 @@ Use this endpoint to unset an existing budget for a particular category in a par
 
 > Example 200 Response
 
-Returns true if operation was successful.
+```json
+true
+```
 
 > Example Error Response (sends as 200)
 
