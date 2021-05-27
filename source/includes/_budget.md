@@ -133,10 +133,10 @@ If this is a sub-category, the response will include the updated category group'
 ### Body Parameters
 Parameter        | Type   | Required | Default | Description
 ---------        | ----   | -------- | ------- | -----------
-amount           | number | false    | -       | Amount for budget
+start_date       | string | true    | -       | Start date for the budget period. Lunch Money currently only supports monthly budgets, so your date must always be the start of a month (eg. 2021-04-01)
+category_id      | number | true    | -       | Unique identifier for the category
+amount           | number | true    | -       | Amount for budget
 currency         | string | false    | -       | Currency for the budgeted amount (optional). If empty, will default to your primary currency
-start_date       | string | false    | -       | Start date for the budget period. Lunch Money currently only supports monthly budgets, so your date must always be the start of a month (eg. 2021-04-01)
-category_id      | number | false    | -       | Unique identifier for the category
 
 ## Remove budget
 
@@ -161,7 +161,7 @@ true
 ### Query Parameters
 Parameter        | Type   | Required | Default | Description
 ---------        | ----   | -------- | ------- | -----------
-start_date       | string | false    | -       | Start date for the budget period. Lunch Money currently only supports monthly budgets, so your date must always be the start of a month (eg. 2021-04-01)
-category_id      | number | false    | -       | Unique identifier for the category
+start_date       | string | true    | -       | Start date for the budget period. Lunch Money currently only supports monthly budgets, so your date must always be the start of a month (eg. 2021-04-01)
+category_id      | number | true    | -       | Unique identifier for the category
 
 ---
