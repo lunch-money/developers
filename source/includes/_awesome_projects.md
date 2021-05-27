@@ -28,6 +28,7 @@ Description                                                                     
 React Native app (WIP)                                                          | [@yuanhaochiang](https://twitter.com/yuanhaochiang) | [Link](https://github.com/yuanworks/bento-money)
 [Singer](http://singer.io) target to sync asset balances from arbitrary sources | [@DouweM](https://twitter.com/DouweM)                | [Link](https://gitlab.com/DouweM/target-lunch-money)
 iOS shortcut for categorizing transactions                    | [@jamiepinheiro](https://twitter.com/jamiepinheiro)             | [Link](https://github.com/jamiepinheiro/lunch_money_categorize_transaction_shortcut)
+[Milk Money](https://milkmoney.club/): mobile web quick add | [Link](https://github.com/dareiff/quick-add) | [@dareiff](https://github.com/dareiff)
 
 <aside class="notice">
 Did you create something with the Lunch Money API? Let us know and we'll add it to this list!

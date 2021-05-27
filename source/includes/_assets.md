@@ -99,7 +99,7 @@ Use this endpoint to update a single asset.
 }
 ```
 
-> Example 400 Response
+> Example Error Response (sends as 200)
 
 ```json
 { "errors": [ "type_name must be one of: cash, credit, investment, other, real estate, loan, vehicle, cryptocurrency, employee compensation" ] }

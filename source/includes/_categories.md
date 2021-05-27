@@ -66,7 +66,7 @@ Use this endpoint to create a single category
 }
 ```
 
-> Example 400 Response
+> Example Error Response (sends as 200)
 
 ```json
 { "error": "Missing category name." }

@@ -75,10 +75,10 @@ Use this endpoint to update a single manually-managed crypto asset (does not inc
 }
 ```
 
-> Example 400 Response
+> Example Error Response (sends as 200)
 
 ```json
-{ "errors": [ "currency is invalid for crypto: ${requestBody.currency}. It may not be supported yet. Request to get it supported via the app or support@lunchmoney.app" ] }
+{ "errors": [ "currency is invalid for crypto: fakecoin. It may not be supported yet. Request to get it supported via the app or support@lunchmoney.app" ] }
 ```
 
 ### HTTP Request
