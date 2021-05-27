@@ -99,7 +99,7 @@ Use this endpoint to get full details on the budgets for all categories between 
 
 `GET https://dev.lunchmoney.app/v1/budgets`
 
-## Upsert budget
+## Upsert Budget
 
 Use this endpoint to update an existing budget or insert a new budget for a particular category and date.
 
@@ -138,7 +138,7 @@ category_id      | number | true    | -       | Unique identifier for the catego
 amount           | number | true    | -       | Amount for budget
 currency         | string | false    | -       | Currency for the budgeted amount (optional). If empty, will default to your primary currency
 
-## Remove budget
+## Remove Budget
 
 Use this endpoint to unset an existing budget for a particular category in a particular month.
 
