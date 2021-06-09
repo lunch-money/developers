@@ -49,7 +49,13 @@ Use this endpoint to retrieve all transactions between a date range.
       "is_group": false,
       "group_id": null,
       "parent_id": null,
-      "external_id": null
+      "external_id": null,
+      "original_name": "STARBUCKS NW 32804",
+      "type": null,
+      "subtype": null,
+      "fees": null,
+      "price": null,
+      "quantity": null
     },
     {
       "id": 603,
@@ -66,7 +72,13 @@ Use this endpoint to retrieve all transactions between a date range.
       "is_group": false,
       "group_id": null,
       "parent_id": null,
-      "external_id": "jf2r3t98o943"
+      "external_id": "jf2r3t98o943",
+      "original_name": "Walmart Superstore ON 39208",
+      "type": null,
+      "subtype": null,
+      "fees": null,
+      "price": null,
+      "quantity": null
     }
   ]
 }
@@ -125,7 +137,13 @@ Use this endpoint to retrieve details about a specific transaction by ID.
     "group_id": null,
     "parent_id": null,
     "has_children": null,
-    "external_id": null
+    "external_id": null,
+    "original_name": "Shell Gas Station",
+    "type": null,
+    "subtype": null,
+    "fees": null,
+    "price": null,
+    "quantity": null
 }
 ```
 
@@ -184,6 +202,7 @@ apply_rules         | boolean | false    | false   | If true, will apply account
 skip_duplicates     | boolean | false    | false   | If true, the system will automatically dedupe based on transaction date, payee and amount. Note that deduping by external_id will occur regardless of this flag.
 check_for_recurring | boolean | false    | false   | If true, will check new transactions for occurrences of new monthly expenses. Defaults to false.
 debit_as_negative   | boolean | false    | false   | If true, will assume negative amount values denote expenses and positive amount values denote credits. Defaults to false.
+skip_balance_update | boolean | false    | true    | If false, will skip updating balance if an asset_id is present for any of the transactions.
 
 
 ### Transaction Object to Insert
@@ -299,14 +318,14 @@ tags                | array   | false    | -       | Array of tag IDs for the gr
 transactions        | array   | true     | -       | Array of transaction IDs to be part of the transaction group
 
 
-## Ungroup Transaction Group
+## Delete Transaction Group
 
-Use this endpoint to ungroup a transaction group.
+Use this endpoint to delete a transaction group. The transactions within the group will not be removed.
 
 > Example 200 Response
 
 ```json
-{ "transactions": [121232,324324,545455] }
+{ "transactions": [121232, 324324, 545455] }
 ```
 
 > Example 404 Response
