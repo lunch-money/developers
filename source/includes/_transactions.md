@@ -18,6 +18,12 @@ is_group         | boolean | True if this transaction represents a group of tran
 group_id         | number  | Exists if this transaction is part of a group. Denotes the parent’s transaction ID
 tags             | Tag[]   | Array of Tag objects
 external_id      | string  | User-defined external ID for any manually-entered or imported transaction. External ID cannot be accessed or changed for Plaid-imported transactions. External ID must be unique by asset_id. Max 75 characters.
+original_name    | string  | The transactions original name before any payee name updates. For synced transactions, this is the raw original payee name from your bank.
+type             | string  | (for synced investment transactions only) The transaction type as set by Plaid for investment transactions. Possible values include: `buy`, `sell`, `cash`, `transfer` and more
+subtype          | string  | (for synced investment transactions only) The transaction type as set by Plaid for investment transactions. Possible values include: `management fee`, `withdrawal`, `dividend`, `deposit` and more
+fees             | string  | (for synced investment transactions only) The fees as set by Plaid for investment transactions.
+price            | string  | (for synced investment transactions only) The price as set by Plaid for investment transactions.
+quantity         | string  | (for synced investment transactions only) The quantity as set by Plaid for investment transactions.
 
 ## Get All Transactions
 
@@ -87,6 +93,9 @@ Returns list of Transaction objects. If no query parameters are set, this endpoi
 | plaid_account_id  | number  | false    | -       | Filter by Plaid account
 | category_id       | number  | false    | -       | Filter by category. Will also match category groups.
 | asset_id          | number  | false    | -       | Filter by asset
+| group_id          | number  | false    | -       | Filter by group_id (if the transaction is part of a specific group)
+| is_group          | boolean | false    | -       | Filter by group (returns transaction groups)
+| status            | string  | false    | -       | Filter by status (Can be `cleared` or `uncleared`. For recurring transactions, use `recurring`)
 | offset            | number  | false    | -       | Sets the offset for the records returned
 | limit             | number  | false    | -       | Sets the maximum number of records to return. **Note:** The server will not respond with any indication that there are more records to be returned. Please check the response length to determine if you should make another call with an offset to fetch more transactions.
 | start_date        | string  | false    | -       | Denotes the beginning of the time period to fetch transactions for. Defaults to beginning of current month. Required if end_date exists. Format: YYYY-MM-DD.
@@ -255,5 +264,61 @@ date        | string        | true     | Must be in ISO 8601 format (YYYY-MM-DD)
 category_id | number        | true     | Unique identifier for associated category_id. Category must be associated with the same account.
 notes       | string        | false    |
 amount      | number/string | true     | Individual amount of split. Currency will inherit from parent transaction. All amounts must sum up to parent transaction amount.
+
+
+## Create Transaction Group
+
+Use this endpoint to create a transaction group of two or more transactions.
+
+> Example 200 Response
+
+```json
+84389
+```
+
+> Example 404 Response
+
+```json
+{ "error": ["Transaction 35360525 is in a transaction group already (35717487) and cannot be added to another transaction group."] }
+```
+
+Returns the ID of the newly created transaction group
+
+### HTTP Request
+
+`POST https://dev.lunchmoney.app/v1/transactions/group`
+
+### Body Parameters
+Parameter           | Type    | Required | Default | Description
+---------           | ----    | -------- | ------- | -----------
+date                | string  | true     | -       | Date for the grouped transaction
+payee               | string  | true     | -       | Payee name for the grouped transaction
+category_id         | number  | false    | -       | Category for the grouped transaction
+notes               | string  | false    | -       | Notes for the grouped transaction
+tags                | array   | false    | -       | Array of tag IDs for the grouped transaction
+transactions        | array   | true     | -       | Array of transaction IDs to be part of the transaction group
+
+
+## Ungroup Transaction Group
+
+Use this endpoint to ungroup a transaction group.
+
+> Example 200 Response
+
+```json
+{ "transactions": [121232,324324,545455] }
+```
+
+> Example 404 Response
+
+```json
+{ "error": ["No transactions found for this group_id 35717487."] }
+```
+
+Returns the IDs of the transactions that were part of the deleted group
+
+### HTTP Request
+
+`DELETE https://dev.lunchmoney.app/v1/transactions/group/:transaction_id`
 
 ---
