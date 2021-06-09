@@ -8,6 +8,7 @@ A log of changes. Breaking changes will be denoted with 🚨
 * New endpoint: [DELETE /v1/transactions/group/:transaction_id](#delete-transaction-group)
 
 ### Updated
+* New option for [POST /v1/transactions](#insert-transactions) and [PUT /v1/transactions](#update-transaction): skip_balance_update
 * New fields for [GET /v1/transactions](#get-all-transactions): original_name, type, subtype, fees, price, quantity
 * New filter options for [GET /v1/transactions](#get-all-transactions): status, is_group, group_id
 

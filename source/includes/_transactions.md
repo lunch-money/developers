@@ -254,11 +254,12 @@ Use this endpoint to update a single transaction. You may also use this to split
 `PUT https://dev.lunchmoney.app/v1/transactions/:transaction_id`
 
 ### Body Parameters
-Parameter         | Type    | Required | Default | Description
----------         | ----    | -------- | ------- | -----------
-split             | object  | false    | -       | Defines the split of a transaction. You may not split an already-split transaction, recurring transaction, or group transaction. (see Split object below)
-transaction       | object  | true     | -       | Updates to transaction matching ID (see Update Transaction object below)
-debit_as_negative | boolean | false    | false   | If true, will assume negative amount values denote expenses and positive amount values denote credits. Defaults to false.
+Parameter           | Type    | Required | Default | Description
+---------           | ----    | -------- | ------- | -----------
+split               | object  | false    | -       | Defines the split of a transaction. You may not split an already-split transaction, recurring transaction, or group transaction. (see Split object below)
+transaction         | object  | true     | -       | Updates to transaction matching ID (see Update Transaction object below)
+debit_as_negative   | boolean | false    | false   | If true, will assume negative amount values denote expenses and positive amount values denote credits. Defaults to false.
+skip_balance_update | boolean | false    | true    | If false, will skip updating balance if an asset_id is present for any of the transactions.
 
 ### Update Transaction Object
 Key          | Type                            | Description
