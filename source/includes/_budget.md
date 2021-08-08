@@ -51,7 +51,7 @@ Use this endpoint to get full details on the budgets for all categories between 
             },
             "2020-07-01": {
                 "spending_to_base": 1720.46
-            },
+            }
         },
         "order": 0
     },
