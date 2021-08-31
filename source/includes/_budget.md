@@ -13,21 +13,21 @@ is_income           | boolean | If true, this category is an income category (ca
 exclude_from_budget | boolean | If true, this category is excluded from budget (category properties are set in the app via the Categories page)
 exclude_from_totals | boolean | If true, this category is excluded from totals (category properties are set in the app via the Categories page)
 data                | Array of data objects | For each month with budget or category spending data, there is a data object with the key set to the month in format YYYY-MM-DD. For properties, see Data object below.
-
+config              | object | Object representing the category's budget suggestion configuration
 
 ## Data Object
 
 Attribute Name      | Type   | Description
 ------------------- | ----   | -----------
-budget_month        | number | Month of the budget in YYYY-MM-DD format
-budget_amount       | number | The budget amount, as set by the user
-budget_currency     | string | The budget currency, as set by the user
-budget_to_base      | number | The budget converted to the user's primary currency. If the multicurrency feature is not being used, budget_to_base and budget_amount will be the same.
+budget_amount       | number | The budget amount, as set by the user. If empty, no budget has been set.
+budget_currency     | string | The budget currency, as set by the user. If empty, no budget has been set.
+budget_to_base      | number | The budget converted to the user's primary currency. If the multicurrency feature is not being used, budget_to_base and budget_amount will be the same. If empty, no budget has been set.
 spending_to_base    | number | The total amount spent in this category for this time period in the user's primary currency
 num_transactions    | number | Number of transactions that make up "spending_to_base"
+is_automated        | boolean | If true, the budget_amount is only a suggestion based on the set config. If not present, it is false (meaning this is a locked in budget)
 
 ## Get Budget Summary
-Use this endpoint to get full details on the budgets for all categories between a certain time period. The budgeted and spending amounts will be an aggregate across this time period.
+Use this endpoint to get full details on the budgets for all budgetable categories between a certain time period. The budgeted and spending amounts will be broken down by month.
 
 > Example 200 Response
 
@@ -44,14 +44,35 @@ Use this endpoint to get full details on the budgets for all categories between 
         "exclude_from_totals": false,
         "data": {
             "2020-09-01": {
-                "spending_to_base": 373.51
+                "num_transactions": 23,
+                "spending_to_base": 373.51,
+                "budget_to_base": 376.08,
+                "budget_amount": 376.08,
+                "budget_currency": "usd",
+                "is_automated": true,
             },
             "2020-08-01": {
-                "spending_to_base": 1387.14
+                "num_transactions": 23,
+                "spending_to_base": 123.92,
+                "budget_to_base": 300,
+                "budget_amount": 300,
+                "budget_currency": "usd",
             },
             "2020-07-01": {
-                "spending_to_base": 1720.46
+                "num_transactions": 23,
+                "spending_to_base": 228.66,
+                "budget_to_base": 300,
+                "budget_amount": 300,
+                "budget_currency": "usd",
             },
+        },
+        "config": {
+            "config_id": 9,
+            "cadence": "monthly",
+            "amount": 300,
+            "currency": "usd",
+            "to_base": 300,
+            "auto_suggest": "fixed-rollover"
         },
         "order": 0
     },
@@ -66,30 +87,19 @@ Use this endpoint to get full details on the budgets for all categories between 
         "exclude_from_totals": false,
         "data": {
             "2020-09-01": {
-                "budget_month": "2020-09-01",
-                "budget_to_base": null,
-                "budget_amount": null,
-                "budget_currency": null,
                 "spending_to_base": 270.86,
                 "num_transactions": 14
             },
             "2020-08-01": {
-                "budget_month": "2020-08-01",
-                "budget_to_base": null,
-                "budget_amount": null,
-                "budget_currency": null,
                 "spending_to_base": 79.53,
                 "num_transactions": 8
             },
             "2020-07-01": {
-                "budget_month": "2020-07-01",
-                "budget_to_base": null,
-                "budget_amount": null,
-                "budget_currency": null,
                 "spending_to_base": 149.61,
                 "num_transactions": 8
             }
         },
+        "config": null,
         "order": 1
     }
 ]
@@ -98,6 +108,13 @@ Use this endpoint to get full details on the budgets for all categories between 
 ### HTTP Request
 
 `GET https://dev.lunchmoney.app/v1/budgets`
+
+### Query Parameters
+Parameter        | Type   | Required | Default | Description
+---------        | ----   | -------- | ------- | -----------
+start_date       | string | true    | -       | Start date for the budget period. Lunch Money currently only supports monthly budgets, so your date should be the start of a month (eg. 2021-04-01)
+end_date         | string | true    | -       | Start date for the budget period. Lunch Money currently only supports monthly budgets, so your date should be the end of a month (eg. 2021-04-30)
+currency         | string | false    | -       | Currency for the budgeted amount (optional). If empty, will default to your primary currency
 
 ## Upsert Budget
 
