@@ -20,6 +20,7 @@ Language                           | Made by                                    
 -----------                        | -------                                             | -----------
 JavaScript with TypeScript support | [@joehoyle](https://twitter.com/joe_hoyle)          | [Link](https://github.com/lunch-money/lunch-money-js)
 Go                                 | [@icco](https://twitter.com/icco)                   | [Link](https://github.com/icco/lunchmoney)
+Python                             | [@juftin](https://github.com/juftin)                | [Link](https://github.com/juftin/lunchable)
 
 ## Other
 
