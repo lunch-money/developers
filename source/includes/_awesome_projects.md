@@ -12,6 +12,7 @@ Source                                                               | Made by  
 [Investing.com](https://investing.com) security prices               | [@DouweM](https://twitter.com/DouweM)                | [Link](https://gitlab.com/DouweM/investing-to-lunch-money)
 [Venmo](https://venmo.com) emails to transactions                    | [@billycao](https://github.com/billycao)             | [Link](https://github.com/billycao/venmo-to-lunch-money)
 [Wealthsimple](https://wealthsimple.com) Invest, Trade, and Cash balances                    | [@jamiepinheiro](https://twitter.com/jamiepinheiro)             | [Link](https://github.com/jamiepinheiro/lunch_money_wealthsimple_bridge)
+[Splitwise](https://splitwise.com) transactions                      | [@juftin](https://github.com/juftin)                | [Link](https://github.com/juftin/lunchable/tree/main/lunchable/plugins/splitlunch)
 
 
 ## API clients
