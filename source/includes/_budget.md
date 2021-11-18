@@ -113,7 +113,7 @@ Use this endpoint to get full details on the budgets for all budgetable categori
 Parameter        | Type   | Required | Default | Description
 ---------        | ----   | -------- | ------- | -----------
 start_date       | string | true    | -       | Start date for the budget period. Lunch Money currently only supports monthly budgets, so your date should be the start of a month (eg. 2021-04-01)
-end_date         | string | true    | -       | Start date for the budget period. Lunch Money currently only supports monthly budgets, so your date should be the end of a month (eg. 2021-04-30)
+end_date         | string | true    | -       | End date for the budget period. Lunch Money currently only supports monthly budgets, so your date should be the end of a month (eg. 2021-04-30)
 currency         | string | false    | -       | Currency for the budgeted amount (optional). If empty, will default to your primary currency
 
 ## Upsert Budget
