@@ -1,6 +1,11 @@
 # Changelog
 A log of changes. Breaking changes will be denoted with 🚨
 
+## August 31, 2021
+
+### Updated
+* New fields for [GET /v1/budgets](#get-budget-summary): config
+
 ## June 9, 2021
 
 ### New
