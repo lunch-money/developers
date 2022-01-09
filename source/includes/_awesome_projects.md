@@ -13,6 +13,8 @@ Source                                                               | Made by  
 [Venmo](https://venmo.com) emails to transactions                    | [@billycao](https://github.com/billycao)             | [Link](https://github.com/billycao/venmo-to-lunch-money)
 [Wealthsimple](https://wealthsimple.com) Invest, Trade, and Cash balances                    | [@jamiepinheiro](https://twitter.com/jamiepinheiro)             | [Link](https://github.com/jamiepinheiro/lunch_money_wealthsimple_bridge)
 Vehicle & House Prices using KBB, Redfin, and Zillow.                | [@mike_bianco](https://twitter.com/mike_bianco)      | [Link](https://github.com/iloveitaly/lunchmoney-assets)
+Categorize Amazon Transactions                | [@mike_bianco](https://twitter.com/mike_bianco)      | [Link](https://github.com/iloveitaly/lunchmoney-amazon)
+
 
 ## API clients
 
