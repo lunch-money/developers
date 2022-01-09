@@ -64,7 +64,7 @@ Use this endpoint to get full details on the budgets for all budgetable categori
                 "budget_to_base": 300,
                 "budget_amount": 300,
                 "budget_currency": "usd",
-            },
+            }
         },
         "config": {
             "config_id": 9,
