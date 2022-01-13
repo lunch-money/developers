@@ -12,6 +12,8 @@ Source                                                               | Made by  
 [Investing.com](https://investing.com) security prices               | [@DouweM](https://twitter.com/DouweM)                | [Link](https://gitlab.com/DouweM/investing-to-lunch-money)
 [Venmo](https://venmo.com) emails to transactions                    | [@billycao](https://github.com/billycao)             | [Link](https://github.com/billycao/venmo-to-lunch-money)
 [Wealthsimple](https://wealthsimple.com) Invest, Trade, and Cash balances                    | [@jamiepinheiro](https://twitter.com/jamiepinheiro)             | [Link](https://github.com/jamiepinheiro/lunch_money_wealthsimple_bridge)
+Vehicle & House Prices using KBB, Redfin, and Zillow.                | [@mike_bianco](https://twitter.com/mike_bianco)      | [Link](https://github.com/iloveitaly/lunchmoney-assets)
+Categorize Amazon Transactions                | [@mike_bianco](https://twitter.com/mike_bianco)      | [Link](https://github.com/iloveitaly/lunchmoney-amazon)
 [Splitwise](https://splitwise.com) transactions                      | [@juftin](https://github.com/juftin)                | [Link](https://github.com/juftin/lunchable/tree/main/lunchable/plugins/splitlunch)
 
 
@@ -32,6 +34,7 @@ React Native app (WIP)                                                          
 iOS shortcut for categorizing transactions                    | [@jamiepinheiro](https://twitter.com/jamiepinheiro)             | [Link](https://github.com/jamiepinheiro/lunch_money_categorize_transaction_shortcut)
 [Milk Money](https://milkmoney.club/): mobile web quick add | [@dareiff](https://github.com/dareiff) | [Link](https://github.com/dareiff/quick-add)
 Scritable iOS Widget for Lunch Money status updates | [@amanb014](https://github.com/amanb014) | [Link](https://github.com/amanb014/lunch-money-widget)
+Import transaction history from Mint. | [@mike_bianco](https://twitter.com/mike_bianco) | [Link](https://github.com/iloveitaly/mint-lunchmoney)
 
 <aside class="notice">
 Did you create something with the Lunch Money API? Let us know and we'll add it to this list!
