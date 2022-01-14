@@ -14,7 +14,7 @@ Source                                                               | Made by  
 [Wealthsimple](https://wealthsimple.com) Invest, Trade, and Cash balances                    | [@jamiepinheiro](https://twitter.com/jamiepinheiro)             | [Link](https://github.com/jamiepinheiro/lunch_money_wealthsimple_bridge)
 Vehicle & House Prices using KBB, Redfin, and Zillow.                | [@mike_bianco](https://twitter.com/mike_bianco)      | [Link](https://github.com/iloveitaly/lunchmoney-assets)
 Categorize Amazon Transactions                | [@mike_bianco](https://twitter.com/mike_bianco)      | [Link](https://github.com/iloveitaly/lunchmoney-amazon)
-[Splitwise](https://splitwise.com) transactions                      | [@juftin](https://github.com/juftin)                | [Link](https://github.com/juftin/lunchable/tree/main/lunchable/plugins/splitlunch)
+[Splitwise](https://www.splitwise.com) transaction                   | [@juftin](https://github.com/juftin)                | [Link](https://github.com/juftin/lunchable/tree/main/lunchable/plugins/splitlunch)
 
 
 ## API clients
