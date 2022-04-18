@@ -207,7 +207,7 @@ Use this endpoint to insert many transactions at once.
 | skip_duplicates     | boolean | false    | false   | If true, the system will automatically dedupe based on transaction date, payee and amount. Note that deduping by external_id will occur regardless of this flag. |
 | check_for_recurring | boolean | false    | false   | If true, will check new transactions for occurrences of new monthly expenses. Defaults to false.                                                                 |
 | debit_as_negative   | boolean | false    | false   | If true, will assume negative amount values denote expenses and positive amount values denote credits. Defaults to false.                                        |
-| skip_balance_update | boolean | false    | true    | If false, will skip updating balance if an asset_id is present for any of the transactions.                                                                      |
+| skip_balance_update | boolean | false    | true    | If true, will skip updating balance if an asset_id is present for any of the transactions.                                                                      |
 
 ### Transaction Object to Insert
 
