@@ -111,18 +111,18 @@ Use this endpoint to create a single (manually-managed) asset.
 
 ### Body Parameters
 
-| Parameter            | Type    | Required                                   | Default                 | Description                                                                                                                                      |
-| -------------------- | ------- | ------------------------------------------ | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| type_name            | string  | true                                       | -                       | Must be one of: cash, credit, investment, other, real estate, loan, vehicle, cryptocurrency, employee compensation                               |
-| subtype_name         | string  | false                                      | -                       | Max 25 characters                                                                                                                                |
-| name                 | string  | true                                       | -                       | Max 45 characters                                                                                                                                |
-| display_name         | string  | Display name of the asset (as set by user) |
-| balance              | string  | true                                       | -                       | Numeric value of the current balance of the account. Do not include any special characters aside from a decimal point!                           |
-| balance_as_of        | string  | false                                      | Current timestamp       | Has no effect if balance is not defined. If balance is defined, but balance_as_of is not supplied or is invalid, current timestamp will be used. |
-| currency             | string  | false                                      | User's primary currency | Three-letter lowercase currency in ISO 4217 format. The code sent must exist in our database. Defaults to user's primary currency.               |
-| institution_name     | string  | false                                      | -                       | Max 50 characters                                                                                                                                |
-| closed_on            | string  | false                                      | -                       | The date this asset was closed                                                                                                                   |
-| exclude_transactions | boolean | false                                      | false                   | If true, this asset will not show up as an option for assignment when creating transactions manually                                             |
+| Parameter            | Type    | Required | Default                 | Description                                                                                                                                      |
+| -------------------- | ------- | -------- | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| type_name            | string  | true     | -                       | Must be one of: cash, credit, investment, other, real estate, loan, vehicle, cryptocurrency, employee compensation                               |
+| subtype_name         | string  | false    | -                       | Max 25 characters                                                                                                                                |
+| name                 | string  | true     | -                       | Max 45 characters                                                                                                                                |
+| display_name         | string  | false    | -                       | Display name of the asset (as set by user)                                                                                                       |
+| balance              | string  | true     | -                       | Numeric value of the current balance of the account. Do not include any special characters aside from a decimal point!                           |
+| balance_as_of        | string  | false    | Current timestamp       | Has no effect if balance is not defined. If balance is defined, but balance_as_of is not supplied or is invalid, current timestamp will be used. |
+| currency             | string  | false    | User's primary currency | Three-letter lowercase currency in ISO 4217 format. The code sent must exist in our database. Defaults to user's primary currency.               |
+| institution_name     | string  | false    | -                       | Max 50 characters                                                                                                                                |
+| closed_on            | string  | false    | -                       | The date this asset was closed                                                                                                                   |
+| exclude_transactions | boolean | false    | false                   | If true, this asset will not show up as an option for assignment when creating transactions manually                                             |
 
 ## Update Asset
 
