@@ -2,7 +2,7 @@
 
 A log of changes. Breaking changes will be denoted with 🚨
 
-## August 31, 2021
+## June 4, 2022
 
 ### New
 
