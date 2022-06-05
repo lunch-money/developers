@@ -141,6 +141,7 @@ Use this endpoint to create a single category
 | is_income           | boolean | false    | false   | Whether or not transactions in this category should be treated as income.               |
 | exclude_from_budget | boolean | false    | false   | Whether or not transactions in this category should be excluded from budgets.           |
 | exclude_from_totals | boolean | false    | false   | Whether or not transactions in this category should be excluded from calculated totals. |
+| group_id            | number  | false    | -       | Assigns the newly-created category to an existing category group.                       |
 
 ## Create Category Group
 
@@ -311,12 +312,10 @@ Use this endpoint to delete a single category or category group. This will only 
 
 > Example 200 Response
 >
-> Returns the ID of the newly-created category group
+> If successfully deleted, returns true
 
 ```json
-{
-  "success": true
-}
+true
 ```
 
 > Example Error Response (sends as 200)
@@ -340,16 +339,16 @@ Use this endpoint to delete a single category or category group. This will only 
 
 ## Force Delete Category
 
-Use this endpoint to force delete a single category or category group and along with it, disassociate the category from any transactions, recurring items, budgets, etc. Note: it is best practice to first try the `Delete Category` endpoint to ensure you don't accidentally delete any data. Disassociation/deletion of the data arising from this endpoint is irreversible!
+Use this endpoint to force delete a single category or category group and along with it, disassociate the category from any transactions, recurring items, budgets, etc.
+
+_Note: it is best practice to first try the `Delete Category` endpoint to ensure you don't accidentally delete any data. Disassociation/deletion of the data arising from this endpoint is irreversible!_
 
 > Example 200 Response
 >
-> Returns the ID of the newly-created category group
+> If successfully deleted, returns true
 
 ```json
-{
-  "success": true
-}
+true
 ```
 
 > Example Error Response (sends as 200)
