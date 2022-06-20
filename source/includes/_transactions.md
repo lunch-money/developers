@@ -207,7 +207,7 @@ Use this endpoint to insert many transactions at once.
 | skip_duplicates     | boolean | false    | false   | If true, the system will automatically dedupe based on transaction date, payee and amount. Note that deduping by external_id will occur regardless of this flag. |
 | check_for_recurring | boolean | false    | false   | If true, will check new transactions for occurrences of new monthly expenses. Defaults to false.                                                                 |
 | debit_as_negative   | boolean | false    | false   | If true, will assume negative amount values denote expenses and positive amount values denote credits. Defaults to false.                                        |
-| skip_balance_update | boolean | false    | true    | If true, will skip updating balance if an asset_id is present for any of the transactions.                                                                      |
+| skip_balance_update | boolean | false    | true    | If true, will skip updating balance if an asset_id is present for any of the transactions.                                                                       |
 
 ### Transaction Object to Insert
 
@@ -288,12 +288,44 @@ Use this endpoint to update a single transaction. You may also use this to split
 
 ### Split Object
 
-| Key         | Type          | Required | Description                                                                                                                      |
-| ----------- | ------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| date        | string        | true     | Must be in ISO 8601 format (YYYY-MM-DD).                                                                                         |
-| category_id | number        | true     | Unique identifier for associated category_id. Category must be associated with the same account.                                 |
-| notes       | string        | false    |
-| amount      | number/string | true     | Individual amount of split. Currency will inherit from parent transaction. All amounts must sum up to parent transaction amount. |
+| Key         | Type          | Required | Description                                                                                                                                |
+| ----------- | ------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| payee       | string        | false    | Max 140 characters. Sets to original payee if none defined                                                                                 |
+| date        | string        | false    | Must be in ISO 8601 format (YYYY-MM-DD). Sets to original date if none defined                                                             |
+| category_id | number        | false    | Unique identifier for associated category_id. Category must be associated with the same account. Sets to original category if none defined |
+| notes       | string        | false    | Sets to original notes if none defined                                                                                                     |
+| amount      | number/string | true     | Individual amount of split. Currency will inherit from parent transaction. All amounts must sum up to parent transaction amount.           |
+
+## Unsplit Transactions
+
+Use this endpoint to unsplit one or more transactions.
+
+> Example 200 Response
+
+```json
+[84389, 23212, 43333]
+```
+
+> Example 404 Response
+
+```json
+{
+  "error": "The following transaction ids are not valid to unsplit: 1232, 1233, 1234"
+}
+```
+
+Returns an array of IDs of deleted transactions
+
+### HTTP Request
+
+`POST https://dev.lunchmoney.app/v1/transactions/unsplit`
+
+### Body Parameters
+
+| Parameter      | Type             | Required | Default | Description                                                                                              |
+| -------------- | ---------------- | -------- | ------- | -------------------------------------------------------------------------------------------------------- |
+| parent_ids     | array of numbers | true     | -       | Array of transaction IDs to unsplit. If one transaction is unsplittable, no transaction will be unsplit. |
+| remove_parents | boolean          | false    | false   | If true, deletes the original parent transaction as well. Note, this is unreversable!                    |
 
 ## Create Transaction Group
 
