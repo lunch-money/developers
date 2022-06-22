@@ -2,6 +2,12 @@
 
 A log of changes. Breaking changes will be denoted with 🚨
 
+## June 22, 2022
+
+### New
+
+- New endpoint: [POST /v1/transactions/unsplit](#unsplit-transactions)
+
 ## June 4, 2022
 
 ### New
