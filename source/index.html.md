@@ -11,6 +11,7 @@ includes:
   - awesome_projects
   - changelog
   - faq
+  - user
   - categories
   - tags
   - transactions
