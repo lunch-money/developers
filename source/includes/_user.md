@@ -4,9 +4,9 @@
 
 | Attribute Name | Type   | Description                                            |
 | -------------- | ------ | ------------------------------------------------------ |
-| id             | number | Unique identifier for user                             |
-| name           | string | User's' name                                           |
-| email          | string | User's email                                           |
+| user_id        | number | Unique identifier for user                             |
+| user_name      | string | User's' name                                           |
+| user_email     | string | User's email                                           |
 | account_id     | number | Unique identifier for the associated budgeting account |
 | budget_name    | string | Name of the associated budgeting account               |
 
