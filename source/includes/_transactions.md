@@ -9,6 +9,7 @@
 | payee            | string  | Name of payee If recurring_id is not null, this field will show the payee of associated recurring expense instead of the original transaction payee                                                                                                                                                                                                                                                                                                                                        |
 | amount           | string  | Amount of the transaction in numeric format to 4 decimal places                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | currency         | string  | Three-letter lowercase currency code of the transaction in ISO 4217 format                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| to_base          | number  | The amount converted to the user's primary currency. If the multicurrency feature is not being used, to_base and amount will be the same.                                                                                                                                                                                                                                                                                                                                                  |
 | notes            | string  | User-entered transaction notes If recurring_id is not null, this field will be description of associated recurring expense                                                                                                                                                                                                                                                                                                                                                                 |
 | category_id      | number  | Unique identifier of associated category (see Categories)                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | asset_id         | number  | Unique identifier of associated manually-managed account (see Assets) Note: plaid_account_id and asset_id cannot both exist for a transaction                                                                                                                                                                                                                                                                                                                                              |
@@ -41,6 +42,7 @@ Use this endpoint to retrieve all transactions between a date range.
       "payee": "Starbucks",
       "amount": "4.5000",
       "currency": "cad",
+      "to_base": 4.5,
       "notes": "Frappuccino",
       "category_id": null,
       "recurring_id": null,
@@ -63,6 +65,7 @@ Use this endpoint to retrieve all transactions between a date range.
       "date": "2020-01-02",
       "payee": "Walmart",
       "amount": "20.9100",
+      "to_base": 20.91,
       "currency": "usd",
       "notes": null,
       "category_id": null,
@@ -129,6 +132,7 @@ Use this endpoint to retrieve details about a specific transaction by ID.
   "payee": "Shell",
   "amount": "960.0000",
   "currency": "jpy",
+  "to_base": 7.48,
   "notes": null,
   "category_id": 22,
   "recurring_id": null,
