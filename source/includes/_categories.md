@@ -10,6 +10,8 @@
 | is_income           | boolean          | If true, the transactions in this category will be treated as income.                                                              |
 | exclude_from_budget | boolean          | If true, the transactions in this category will be excluded from the budget.                                                       |
 | exclude_from_totals | boolean          | If true, the transactions in this category will be excluded from totals.                                                           |
+| archived            | boolean          | If true, the category is archived and not displayed in relevant areas of the Lunch Money app.                                      |
+| archived_at         | string           | The date and time of when the category was last archived (in the ISO 8601 extended format).                                        |
 | updated_at          | string           | The date and time of when the category was last updated (in the ISO 8601 extended format).                                         |
 | created_at          | string           | The date and time of when the category was created (in the ISO 8601 extended format).                                              |
 | is_group            | boolean          | If true, the category is a group that can be a parent to other categories.                                                         |
@@ -67,6 +69,8 @@ Use this endpoint to get hydrated details on a single category. Note that if thi
   "is_income": false,
   "exclude_from_budget": false,
   "exclude_from_totals": false,
+  "archived": false,
+  "archived_on": null,
   "is_group": true,
   "group_id": null,
   "children": [
@@ -141,6 +145,7 @@ Use this endpoint to create a single category
 | is_income           | boolean | false    | false   | Whether or not transactions in this category should be treated as income.               |
 | exclude_from_budget | boolean | false    | false   | Whether or not transactions in this category should be excluded from budgets.           |
 | exclude_from_totals | boolean | false    | false   | Whether or not transactions in this category should be excluded from calculated totals. |
+| archived            | boolean | false    | false   | Whether or not category should be archived.                                             |
 | group_id            | number  | false    | -       | Assigns the newly-created category to an existing category group.                       |
 
 ## Create Category Group
@@ -234,6 +239,7 @@ true
 | is_income           | boolean | false    | false   | Whether or not transactions in this category should be treated as income.               |
 | exclude_from_budget | boolean | false    | false   | Whether or not transactions in this category should be excluded from budgets.           |
 | exclude_from_totals | boolean | false    | false   | Whether or not transactions in this category should be excluded from calculated totals. |
+| archived            | boolean | false    | false   | Whether or not category should be archived.                                             |
 | group_id            | number  | false    | false   | For a category, set the group_id to include it in a category group                      |
 
 ## Add to Category Group
