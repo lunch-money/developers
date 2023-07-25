@@ -11,7 +11,7 @@
 | exclude_from_budget | boolean          | If true, the transactions in this category will be excluded from the budget.                                                       |
 | exclude_from_totals | boolean          | If true, the transactions in this category will be excluded from totals.                                                           |
 | archived            | boolean          | If true, the category is archived and not displayed in relevant areas of the Lunch Money app.                                      |
-| archived_at         | string           | The date and time of when the category was last archived (in the ISO 8601 extended format).                                        |
+| archived_on         | string           | The date and time of when the category was last archived (in the ISO 8601 extended format).                                        |
 | updated_at          | string           | The date and time of when the category was last updated (in the ISO 8601 extended format).                                         |
 | created_at          | string           | The date and time of when the category was created (in the ISO 8601 extended format).                                              |
 | is_group            | boolean          | If true, the category is a group that can be a parent to other categories.                                                         |
