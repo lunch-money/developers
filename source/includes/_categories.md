@@ -50,7 +50,27 @@ Use this endpoint to get a flattened list of all categories in alphabetical orde
       "created_at": "2020-01-28T09:49:03.238Z",
       "is_group": false,
       "group_id": 83,
-      "order": 1
+      "order": 1,
+      "children": [
+        {
+          "id": 315162,
+          "name": "Alcohol, Bars",
+          "description": null,
+          "created_at": "2022-03-06T20:11:36.066Z"
+        },
+        {
+          "id": 315169,
+          "name": "Groceries",
+          "description": null,
+          "created_at": "2022-03-06T20:11:36.120Z"
+        },
+        {
+          "id": 315172,
+          "name": "Restaurants",
+          "description": null,
+          "created_at": "2022-03-06T20:11:36.146Z"
+        }
+      ]
     }
   ]
 }
@@ -59,6 +79,12 @@ Use this endpoint to get a flattened list of all categories in alphabetical orde
 ### HTTP Request
 
 `GET https://dev.lunchmoney.app/v1/categories`
+
+### Query Parameters
+
+| Parameter | Type   | Required | Default   | Description                                                                                                                                                                                                                                                                                                                      |
+| --------- | ------ | -------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| format    | string | false    | flattened | Can either `flattened` or `nested`. If `flattened`, returns a singular array of categories, ordered alphabetically. If `nested`, returns top-level categories (either category groups or categories not part of a category group) in an array. Subcategories are nested within the category group under the property `children`. |
 
 ## Get Single Category
 
