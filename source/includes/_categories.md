@@ -16,6 +16,7 @@
 | created_at          | string           | The date and time of when the category was created (in the ISO 8601 extended format).                                              |
 | is_group            | boolean          | If true, the category is a group that can be a parent to other categories.                                                         |
 | group_id            | number           | The ID of a category group (or null if the category doesn't belong to a category group).                                           |
+| order               | number           | Numerical ordering of categories                                                                                                   |
 | children            | array of objects | For category groups, this will populate with the categories nested within and include id, name, description and created_at fields. |
 
 ## Get All Categories
@@ -35,7 +36,8 @@ Use this endpoint to get a flattened list of all categories in alphabetical orde
       "updated_at": "2020-01-28T09:49:03.225Z",
       "created_at": "2020-01-28T09:49:03.225Z",
       "is_group": true,
-      "group_id": null
+      "group_id": null,
+      "order": 0
     },
     {
       "id": 84,
@@ -47,7 +49,28 @@ Use this endpoint to get a flattened list of all categories in alphabetical orde
       "updated_at": "2020-01-28T09:49:03.238Z",
       "created_at": "2020-01-28T09:49:03.238Z",
       "is_group": false,
-      "group_id": 83
+      "group_id": 83,
+      "order": 1,
+      "children": [
+        {
+          "id": 315162,
+          "name": "Alcohol, Bars",
+          "description": null,
+          "created_at": "2022-03-06T20:11:36.066Z"
+        },
+        {
+          "id": 315169,
+          "name": "Groceries",
+          "description": null,
+          "created_at": "2022-03-06T20:11:36.120Z"
+        },
+        {
+          "id": 315172,
+          "name": "Restaurants",
+          "description": null,
+          "created_at": "2022-03-06T20:11:36.146Z"
+        }
+      ]
     }
   ]
 }
@@ -56,6 +79,12 @@ Use this endpoint to get a flattened list of all categories in alphabetical orde
 ### HTTP Request
 
 `GET https://dev.lunchmoney.app/v1/categories`
+
+### Query Parameters
+
+| Parameter | Type   | Required | Default   | Description                                                                                                                                                                                                                                                                                                                      |
+| --------- | ------ | -------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| format    | string | false    | flattened | Can either `flattened` or `nested`. If `flattened`, returns a singular array of categories, ordered alphabetically. If `nested`, returns top-level categories (either category groups or categories not part of a category group) in an array. Subcategories are nested within the category group under the property `children`. |
 
 ## Get Single Category
 
@@ -73,6 +102,7 @@ Use this endpoint to get hydrated details on a single category. Note that if thi
   "archived_on": null,
   "is_group": true,
   "group_id": null,
+  "order": 5,
   "children": [
     {
       "id": 315162,

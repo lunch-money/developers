@@ -2,6 +2,13 @@
 
 A log of changes. Breaking changes will be denoted with 🚨
 
+## October 8, 2023
+
+### Updated
+
+- New fields for [GET /v1/categories](#get-all-categories): order
+- New option for [GET /v1/categories](#get-all-categories): format (flattened or nested)
+
 ## June 22, 2022
 
 ### New
