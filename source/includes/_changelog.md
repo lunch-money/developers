@@ -6,8 +6,8 @@ A log of changes. Breaking changes will be denoted with 🚨
 
 ### Updated
 
-- New fields for [GET /v1/categories](#get-categories): order
-- New option for [GET /v1/categories](#get-categories): format (flattened or nested)
+- New fields for [GET /v1/categories](#get-all-categories): order
+- New option for [GET /v1/categories](#get-all-categories): format (flattened or nested)
 
 ## June 22, 2022
 
