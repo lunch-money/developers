@@ -34,8 +34,8 @@ Use this endpoint to get a list of all manually-managed assets associated with t
       "balance": "1201.0100",
       "balance_as_of": "2020-01-26T12:27:22.000Z",
       "currency": "cad",
-      "status": "active",
       "institution_name": "Bank of Me",
+      "exclude_transactions": false,
       "created_at": "2020-01-26T12:27:22.726Z"
     },
     {
@@ -46,8 +46,8 @@ Use this endpoint to get a list of all manually-managed assets associated with t
       "balance": "0.0000",
       "balance_as_of": "2020-01-26T12:27:22.000Z",
       "currency": "usd",
-      "status": "active",
       "institution_name": "Bank of You",
+      "exclude_transactions": false,
       "created_at": "2020-01-26T12:27:22.744Z"
     },
     {
@@ -58,8 +58,8 @@ Use this endpoint to get a list of all manually-managed assets associated with t
       "balance": "99999999999.0000",
       "balance_as_of": "2020-01-26T12:27:22.000Z",
       "currency": "jpy",
-      "status": "active",
       "institution_name": "Bank of Mom",
+      "exclude_transactions": false,
       "created_at": "2020-01-26T12:27:22.755Z"
     },
     {
@@ -70,8 +70,8 @@ Use this endpoint to get a list of all manually-managed assets associated with t
       "balance": "10101010101.0000",
       "balance_as_of": "2020-01-26T12:27:22.000Z",
       "currency": "twd",
-      "status": "active",
       "institution_name": null,
+      "exclude_transactions": true,
       "created_at": "2020-01-26T12:27:22.765Z"
     }
   ]
@@ -140,6 +140,7 @@ Use this endpoint to update a single asset.
   "balance_as_of": "2020-03-10T05:17:23.856Z",
   "currency": "cad",
   "institution_name": "TD Bank",
+  "exclude_transactions": false,
   "created_at": "2019-08-10T22:46:19.486Z"
 }
 ```
