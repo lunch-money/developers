@@ -23,9 +23,8 @@ GEM
     fast_blank (1.0.1)
     fastimage (2.2.7)
     ffi (1.16.3)
-    haml (6.2.3)
-      temple (>= 0.8.2)
-      thor
+    haml (5.2.2)
+      temple (>= 0.8.0)
       tilt
     hamster (3.0.0)
       concurrent-ruby (~> 1.0)
@@ -74,7 +73,7 @@ GEM
       toml
       uglifier (~> 3.0)
       webrick
-    middleman-sprockets (4.1.1)
+    middleman-sprockets (4.1.0)
       middleman-core (~> 4.0)
       sprockets (>= 3.0)
     middleman-syntax (3.3.0)
@@ -127,9 +126,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  haml (~> 5.2)
   middleman (~> 4.5)
   middleman-autoprefixer (~> 3.0)
-  middleman-sprockets (~> 4.1)
+  middleman-sprockets (= 4.1.0)
   middleman-syntax (~> 3.3)
   nokogiri (~> 1.15.4)
   redcarpet (~> 3.6.0)
