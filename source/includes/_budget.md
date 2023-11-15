@@ -31,7 +31,7 @@ is_automated        | boolean | true | If true, the budget_amount is only a sugg
 Attribute Name      | Type   | Nullable | Description
 ------------------- | ----   | -------- | -----------
 config_id           | number | false | Unique identifier for config
-cadence             | string | false | One of:<br> <ul> <li>monthly</li> <li>twice a month</li> <li>once a week</li> <li>every 3 months</li> <li>every 3 months</li> <li>every 4 months</li> <li>twice a year</li> <li>yearly</li></ul>
+cadence             | string | false | One of:<br> <ul> <li>monthly</li> <li>twice a month</li> <li>once a week</li> <li>every 3 months</li> <li>every 4 months</li> <li>twice a year</li> <li>yearly</li></ul>
 amount              | number | false | Amount in numeric format
 currency            | string | false | Three-letter lowercase currency code for the recurring expense in ISO 4217 format
 to_base             | number | false | The amount converted to the user's primary currency.

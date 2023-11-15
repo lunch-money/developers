@@ -6,7 +6,7 @@ Attribute        | Type   | Description
 id               | number | Unique identifier for recurring expense
 start_date       | string | Denotes when recurring expense starts occurring in ISO 8601 format. If null, then this recurring expense will show up for all time before end_date
 end_date         | string | Denotes when recurring expense stops occurring in ISO 8601 format. If null, then this recurring expense has no set end date and will show up for all months after start_date
-cadence          | string | One of:<br> <ul> <li>monthly</li> <li>twice a month</li> <li>once a week</li> <li>every 3 months</li> <li>every 3 months</li> <li>every 4 months</li> <li>twice a year</li> <li>yearly</li></ul>
+cadence          | string | One of:<br> <ul> <li>monthly</li> <li>twice a month</li> <li>once a week</li> <li>every 3 months</li> <li>every 4 months</li> <li>twice a year</li> <li>yearly</li></ul>
 payee            | string | Payee of the recurring expense
 amount           | number | Amount of the recurring expense in numeric format to 4 decimal places
 currency         | string | Three-letter lowercase currency code for the recurring expense in ISO 4217 format
