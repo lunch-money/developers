@@ -35,7 +35,7 @@ cadence             | string | false | One of:<br> <ul> <li>monthly</li> <li>twi
 amount              | number | false | Amount in numeric format
 currency            | string | false | Three-letter lowercase currency code for the recurring expense in ISO 4217 format
 to_base             | number | false | The amount converted to the user's primary currency.
-auto_suggest        | string | false | One of:<br> <ul> <li>fixed-rollover</li> </ul>
+auto_suggest        | string | false | One of:<br> <ul> <li>budgeted</li> <li>fixed</li> <li>fixed-rollover</li> <li>spent</li> </ul>
 
 ## Get Budget Summary
 
