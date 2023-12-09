@@ -4,8 +4,8 @@
 
 Attribute Name      | Type   | Nullable | Description
 ------------------- | ----   | -------- | -----------
-category_name       | string | false | Name of the category
-category_id         | number | true | Unique identifier for category
+category_name       | string | false | Name of the category, will be "Uncategorized" if no category is assigned
+category_id         | number | true | Unique identifier for category, can be null when `category_name` is "Uncategorized"
 category_group_name | string | true | Name of the category group, if applicable
 group_id            | number | true | Unique identifier for category group
 is_group            | boolean | true | If true, this category is a group
