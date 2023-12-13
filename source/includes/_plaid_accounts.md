@@ -39,11 +39,14 @@ Use this endpoint to get a list of all synced Plaid accounts associated with the
       "mask": "7468",
       "institution_name": "Vanguard",
       "status": "inactive",
-      "last_import": "2019-09-04T12:57:09.190Z",
+      "limit": null
       "balance": "12345.6700",
       "currency": "usd",
+      "import_start_date": "2023-01-01",
       "balance_last_update": "2020-01-27T01:38:11.862Z",
-      "limit": null
+      "last_import": "2019-09-04T12:57:09.190Z",
+      "last_fetch": "2020-01-28T01:38:11.862Z",
+      "plaid_last_successful_update": "2020-01-27T01:38:11.862Z",
     },
     {
       "id": 89,
@@ -54,11 +57,14 @@ Use this endpoint to get a list of all synced Plaid accounts associated with the
       "mask": "1973",
       "institution_name": "Chase",
       "status": "active",
-      "last_import": "2019-09-04T12:57:03.250Z",
+      "limit": 15000
       "balance": "0.0000",
       "currency": "usd",
-      "balance_last_update": "2020-01-27T01:38:07.460Z",
-      "limit": 15000
+      "import_start_date": "2023-01-01",
+      "balance_last_update": "2023-01-27T01:38:07.460Z",
+      "last_import": "2023-01-24T12:57:03.250Z",
+      "last_fetch": "2023-01-28T01:38:11.862Z",
+      "plaid_last_successful_update": "2023-01-27T01:38:11.862Z",
     }
   ]
 }
@@ -80,15 +86,17 @@ Use this endpoint to trigger a fetch for latest data from Plaid.
 true
 ```
 
-Returns true if there were eligible Plaid accounts to trigger a fetch for. Eligible accounts are those who `last_fetch` value is over 1 minute ago.
+Returns true if there were eligible Plaid accounts to trigger a fetch for. Eligible accounts are those who `last_fetch` value is over 1 minute ago. (Although the limit is every minute, please use this endpoint sparingly!)
+
+Note that fetching from Plaid is a background job. This endpoint simply queues up the job. You may track the `plaid_last_successful_update`, `last_fetch` and `last_import` properties to verify the results of the fetch.
 
 ### Body Parameters
 
-| Parameter        | Type   | Required | Default | Description                                        |
-| ---------------- | ------ | -------- | ------- | -------------------------------------------------- |
-| start_date       | string | false    | -       | Start date for fetch (ignored if end_date is null) |
-| end_date         | string | false    | -       | End date for fetch (ignored if start_date is null) |
-| plaid_account_id | number | false    | -       | Specific ID of a plaid account to fetch            |
+| Parameter        | Type   | Required | Default | Description                                                                                                     |
+| ---------------- | ------ | -------- | ------- | --------------------------------------------------------------------------------------------------------------- |
+| start_date       | string | false    | -       | Start date for fetch (ignored if end_date is null)                                                              |
+| end_date         | string | false    | -       | End date for fetch (ignored if start_date is null)                                                              |
+| plaid_account_id | number | false    | -       | Specific ID of a plaid account to fetch. If left empty, endpoint will trigger a fetch for all eligible accounts |
 
 ### HTTP Request
 
