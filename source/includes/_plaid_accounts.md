@@ -1,23 +1,28 @@
 # Plaid Accounts
 
 ## Plaid Accounts Object
-Attribute Name      | Type   | Description
-------------------- | ----   | -----------
-id                  | number | Unique identifier of Plaid account
-date_linked         | string | Date account was first linked in ISO 8601 extended format
-name                | string | Name of the account. Can be overridden by the user. Field is originally set by Plaid
-type                | string | Primary type of account. Typically one of:<br><ul> <li>credit</li> <li>depository</li> <li>brokerage</li> <li>cash</li> <li>loan</li> <li>Investment</li><ul><br> This field is set by Plaid and cannot be altered
-subtype             | string | Optional subtype name of account. This field is set by Plaid and cannot be altered
-mask                | string | Mask (last 3 to 4 digits of account) of account. This field is set by Plaid and cannot be altered
-institution_name    | string | Name of institution associated with account. This field is set by Plaid and cannot be altered
-status              | string | Denotes the current status of the account within Lunch Money. Must be one of:<br><ul> <li>active: Account is active and in good state</li> <li>inactive: Account marked inactive from user. No transactions fetched or balance update for this account.</li> <li>relink: Account needs to be relinked with Plaid.</li> <li>syncing: Account is awaiting first import of transactions</li> <li>error: Account is in error with Plaid</li> <li>not found: Account is in error with Plaid</li> <li>not supported: Account is in error with Plaid</li><ul>
-last_import         | string | Date of last imported transaction in ISO 8601 extended format (not necessarily date of last attempted import)
-balance             | string | Current balance of the account in numeric format to 4 decimal places. This field is set by Plaid and cannot be altered
-currency            | string | Currency of account balance in ISO 4217 format. This field is set by Plaid and cannot be altered
-balance_last_update | string | Date balance was last updated in ISO 8601 extended format. This field is set by Plaid and cannot be altered
-limit               | number | Optional credit limit of the account. This field is set by Plaid and cannot be altered
+
+| Attribute Name               | Type   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| ---------------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| id                           | number | Unique identifier of Plaid account                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| date_linked                  | string | Date account was first linked in ISO 8601 extended format                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| name                         | string | Name of the account. Can be overridden by the user. Field is originally set by Plaid                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| type                         | string | Primary type of account. Typically one of:<br><ul> <li>credit</li> <li>depository</li> <li>brokerage</li> <li>cash</li> <li>loan</li> <li>Investment</li><ul><br> This field is set by Plaid and cannot be altered                                                                                                                                                                                                                                                                                                                                     |
+| subtype                      | string | Optional subtype name of account. This field is set by Plaid and cannot be altered                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| mask                         | string | Mask (last 3 to 4 digits of account) of account. This field is set by Plaid and cannot be altered                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| institution_name             | string | Name of institution associated with account. This field is set by Plaid and cannot be altered                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| status                       | string | Denotes the current status of the account within Lunch Money. Must be one of:<br><ul> <li>active: Account is active and in good state</li> <li>inactive: Account marked inactive from user. No transactions fetched or balance update for this account.</li> <li>relink: Account needs to be relinked with Plaid.</li> <li>syncing: Account is awaiting first import of transactions</li> <li>error: Account is in error with Plaid</li> <li>not found: Account is in error with Plaid</li> <li>not supported: Account is in error with Plaid</li><ul> |
+| balance                      | string | Current balance of the account in numeric format to 4 decimal places. This field is set by Plaid and cannot be altered                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| currency                     | string | Currency of account balance in ISO 4217 format. This field is set by Plaid and cannot be altered                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| balance_last_update          | string | Date balance was last updated in ISO 8601 extended format. This field is set by Plaid and cannot be altered                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| limit                        | number | Optional credit limit of the account. This field is set by Plaid and cannot be altered                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| import_start_date            | string | Date of earliest date allowed for importing transactions. Transactions earlier than this date are not imported.                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| last_import                  | string | Timestamp in ISO 8601 extended format of the last time Lunch Money imported new data from Plaid for this account.                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| last_fetch                   | string | Timestamp in ISO 8601 extended format of the last successful check from Lunch Money for updated data or timestamps from Plaid in ISO 8601 extended format (not necessarily date of last successful import)                                                                                                                                                                                                                                                                                                                                             |
+| plaid_last_successful_update | string | Timestamp in ISO 8601 extended format of the last time Plaid successfully connected with institution for new transaction updates, regardless of whether any new data was available in the update.                                                                                                                                                                                                                                                                                                                                                      |
 
 ## Get All Plaid Accounts
+
 Use this endpoint to get a list of all synced Plaid accounts associated with the user's account.
 
 > Example 200 Response
@@ -64,5 +69,29 @@ Plaid Accounts are individual bank accounts that you have linked to Lunch Money 
 ### HTTP Request
 
 `GET https://dev.lunchmoney.app/v1/plaid_accounts`
+
+## Trigger Fetch from Plaid
+
+Use this endpoint to trigger a fetch for latest data from Plaid.
+
+> Example 200 Response
+
+```json
+true
+```
+
+Returns true if there were eligible Plaid accounts to trigger a fetch for. Eligible accounts are those who `last_fetch` value is over 1 minute ago.
+
+### Body Parameters
+
+| Parameter        | Type   | Required | Default | Description                                        |
+| ---------------- | ------ | -------- | ------- | -------------------------------------------------- |
+| start_date       | string | false    | -       | Start date for fetch (ignored if end_date is null) |
+| end_date         | string | false    | -       | End date for fetch (ignored if start_date is null) |
+| plaid_account_id | number | false    | -       | Specific ID of a plaid account to fetch            |
+
+### HTTP Request
+
+`POST https://dev.lunchmoney.app/v1/plaid_accounts/fetch`
 
 ---
