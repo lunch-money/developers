@@ -2,6 +2,12 @@
 
 A log of changes. Breaking changes will be denoted with 🚨
 
+## December 20, 2023
+
+### New
+
+- New endpoint: [POST /v1/plaid_accounts/fetch](#trigger-fetch-from-plaid) (experimental)
+
 ## October 8, 2023
 
 ### Updated
