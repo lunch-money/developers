@@ -78,6 +78,8 @@ Plaid Accounts are individual bank accounts that you have linked to Lunch Money 
 
 ## Trigger Fetch from Plaid
 
+_This is an experimental endpoint and parameters and/or response may change._
+
 Use this endpoint to trigger a fetch for latest data from Plaid.
 
 > Example 200 Response
