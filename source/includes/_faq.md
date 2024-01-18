@@ -14,6 +14,6 @@ Awesome! Please share with us via email about what you built! If you are willing
 
 ## Where can I get support?
 
-If you're a paying member of Lunch Money, [join our Slack community](https://my.lunchmoney.app/community) and chat with us in the `#_api` channel! For account-specific issues, email us at [support@lunchmoney.app](mailto:support@lunchmoney.app).
+[Join our Discord community](https://discord.gg/vSz6jjZuj8) and chat with us in the `💻-developer-api` channel! For account-specific issues, email us at [support@lunchmoney.app](mailto:support@lunchmoney.app).
 
 ---
