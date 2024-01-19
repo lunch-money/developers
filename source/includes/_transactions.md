@@ -53,11 +53,12 @@
 | account_display_name       | number  | Display name for associated account (manual or Plaid). If this is a synced account, returns `plaid_account_display_name` or `asset_display_name`.                                                                                                                                                                                                                                                                                                                                          |
 | tags                       | Tag[]   | Array of Tag objects                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | external_id                | string  | User-defined external ID for any manually-entered or imported transaction. External ID cannot be accessed or changed for Plaid-imported transactions. External ID must be unique by asset_id. Max 75 characters.                                                                                                                                                                                                                                                                           |
+| original_date              | string  | DEPRECATED                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | type                       | string  | DEPRECATED                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | subtype                    | string  | DEPRECATED                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | fees                       | string  | DEPRECATED                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | price                      | string  | DEPRECATED                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| quantity (DEPRECATE)       | string  | DEPRECATED                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| quantity                   | string  | DEPRECATED                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 
 ## Get All Transactions
 
@@ -69,42 +70,42 @@ Use this endpoint to retrieve all transactions between a date range.
 {
   "transactions": [
     {
-      "id": 246946944, //
-      "date": "2023-07-18", //
-      "amount": "53.1900", //
-      "currency": "usd", //
-      "to_base": 53.19, //
-      "payee": "Amazon", //
-      "category_id": 315172, //
-      "category_name": "Restaurants", //-
-      "category_group_id": 315358, //-
-      "category_group_name": "Food & Drink", //-
-      "is_income": false, //
-      "exclude_from_budget": false, //
-      "exclude_from_totals": false, //
-      "created_at": "2023-09-09T08:43:05.875Z", //
-      "updated_at": "2023-10-09T06:07:03.105Z", //
-      "status": "cleared", //
-      "is_pending": false, //
-      "notes": null, //
-      "original_name": null, //
-      "recurring_id": null, //
-      "recurring_payee": null, //
-      "recurring_description": null, //
-      "recurring_cadence": null, //
-      "recurring_type": null, //
-      "recurring_amount": null, //
-      "recurring_currency": null, //
-      "parent_id": 225508713, //
-      "has_children": null, //
-      "group_id": null, //
-      "is_group": false, //
-      "asset_id": null, //
-      "asset_institution_name": null, //
-      "asset_name": null, //
-      "asset_display_name": null, //
-      "asset_status": null, //
-      "plaid_account_id": 76602, //
+      "id": 246946944,
+      "date": "2023-07-18",
+      "amount": "53.1900",
+      "currency": "usd",
+      "to_base": 53.19,
+      "payee": "Amazon",
+      "category_id": 315172,
+      "category_name": "Restaurants",
+      "category_group_id": 315358,
+      "category_group_name": "Food & Drink",
+      "is_income": false,
+      "exclude_from_budget": false,
+      "exclude_from_totals": false,
+      "created_at": "2023-09-09T08:43:05.875Z",
+      "updated_at": "2023-10-09T06:07:03.105Z",
+      "status": "cleared",
+      "is_pending": false,
+      "notes": null,
+      "original_name": null,
+      "recurring_id": null,
+      "recurring_payee": null,
+      "recurring_description": null,
+      "recurring_cadence": null,
+      "recurring_type": null,
+      "recurring_amount": null,
+      "recurring_currency": null,
+      "parent_id": 225508713,
+      "has_children": null,
+      "group_id": null,
+      "is_group": false,
+      "asset_id": null,
+      "asset_institution_name": null,
+      "asset_name": null,
+      "asset_display_name": null,
+      "asset_status": null,
+      "plaid_account_id": 76602,
       "plaid_account_name": "Amazon Whole Foods Visa",
       "plaid_account_mask": "6299",
       "institution_name": "Chase",
@@ -115,13 +116,12 @@ Use this endpoint to retrieve all transactions between a date range.
       "display_name": "Amazon",
       "display_notes": null,
       "account_display_name": "Amazon Whole Foods Visa",
-      "tags": [], //
-      "external_id": null //
+      "tags": [],
+      "external_id": null
     },
     {
       "id": 246946943,
       "date": "2023-07-18",
-      "original_date": null,
       "amount": "12.2100",
       "currency": "usd",
       "to_base": 12.21,
@@ -215,7 +215,6 @@ Use this endpoint to retrieve details about a specific transaction by ID.
 {
   "id": 480887173,
   "date": "2023-11-29",
-  "original_date": null,
   "amount": "-14.1800",
   "currency": "usd",
   "to_base": -14.18,
@@ -455,7 +454,6 @@ Use this endpoint to get the parent transaction and associated children transact
 {
   "id": 481307164,
   "date": "2023-11-29",
-  "original_date": null,
   "amount": "0",
   "currency": "usd",
   "to_base": 0,
