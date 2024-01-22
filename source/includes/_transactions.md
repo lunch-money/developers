@@ -226,7 +226,6 @@ Use this endpoint to retrieve details about a specific transaction by ID.
   "is_income": false,
   "exclude_from_budget": false,
   "exclude_from_totals": false,
-  "archived": null,
   "created_at": "2023-11-30T22:10:57.820Z",
   "updated_at": "2023-11-30T23:59:56.587Z",
   "status": "cleared",
