@@ -2,6 +2,13 @@
 
 A log of changes. Breaking changes will be denoted with 🚨
 
+## January 18, 2024
+
+### New
+
+- New endpoint: [GET /v1/transactions/group](#get-transaction-group)
+- New fields for [Transaction object](#transaction-object) and deprecated query parameter (`group_id`) and fields (`type`, `subtype`, `quantity`, `fee`, `price`)
+
 ## December 20, 2023
 
 ### New

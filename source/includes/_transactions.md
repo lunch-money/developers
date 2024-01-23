@@ -2,30 +2,63 @@
 
 ## Transaction Object
 
-| Attribute Name   | Type    | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| ---------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| id               | number  | Unique identifier for transaction                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| date             | string  | Date of transaction in ISO 8601 format                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| payee            | string  | Name of payee If recurring_id is not null, this field will show the payee of associated recurring expense instead of the original transaction payee                                                                                                                                                                                                                                                                                                                                        |
-| amount           | string  | Amount of the transaction in numeric format to 4 decimal places                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| currency         | string  | Three-letter lowercase currency code of the transaction in ISO 4217 format                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| to_base          | number  | The amount converted to the user's primary currency. If the multicurrency feature is not being used, to_base and amount will be the same.                                                                                                                                                                                                                                                                                                                                                  |
-| notes            | string  | User-entered transaction notes If recurring_id is not null, this field will be description of associated recurring expense                                                                                                                                                                                                                                                                                                                                                                 |
-| category_id      | number  | Unique identifier of associated category (see Categories)                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| asset_id         | number  | Unique identifier of associated manually-managed account (see Assets) Note: plaid_account_id and asset_id cannot both exist for a transaction                                                                                                                                                                                                                                                                                                                                              |
-| plaid_account_id | number  | Unique identifier of associated Plaid account (see Plaid Accounts) Note: plaid_account_id and asset_id cannot both exist for a transaction                                                                                                                                                                                                                                                                                                                                                 |
-| status           | string  | One of the following: <ul> <li>cleared: User has reviewed the transaction</li><li>uncleared: User has not yet reviewed the transaction</li><li>recurring: Transaction is linked to a recurring expense</li><li>recurring_suggested: Transaction is listed as a suggested transaction for an existing recurring expense.</li><li>pending: Imported transaction is marked as pending. This should be a temporary state.</li></ul> User intervention is required to change this to recurring. |
-| parent_id        | number  | Exists if this is a split transaction. Denotes the transaction ID of the original transaction. Note that the parent transaction is not returned in this call.                                                                                                                                                                                                                                                                                                                              |
-| is_group         | boolean | True if this transaction represents a group of transactions. If so, amount and currency represent the totalled amount of transactions bearing this transaction’s id as their group_id. Amount is calculated based on the user’s primary currency.                                                                                                                                                                                                                                          |
-| group_id         | number  | Exists if this transaction is part of a group. Denotes the parent’s transaction ID                                                                                                                                                                                                                                                                                                                                                                                                         |
-| tags             | Tag[]   | Array of Tag objects                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| external_id      | string  | User-defined external ID for any manually-entered or imported transaction. External ID cannot be accessed or changed for Plaid-imported transactions. External ID must be unique by asset_id. Max 75 characters.                                                                                                                                                                                                                                                                           |
-| original_name    | string  | The transactions original name before any payee name updates. For synced transactions, this is the raw original payee name from your bank.                                                                                                                                                                                                                                                                                                                                                 |
-| type             | string  | (for synced investment transactions only) The transaction type as set by Plaid for investment transactions. Possible values include: `buy`, `sell`, `cash`, `transfer` and more                                                                                                                                                                                                                                                                                                            |
-| subtype          | string  | (for synced investment transactions only) The transaction type as set by Plaid for investment transactions. Possible values include: `management fee`, `withdrawal`, `dividend`, `deposit` and more                                                                                                                                                                                                                                                                                        |
-| fees             | string  | (for synced investment transactions only) The fees as set by Plaid for investment transactions.                                                                                                                                                                                                                                                                                                                                                                                            |
-| price            | string  | (for synced investment transactions only) The price as set by Plaid for investment transactions.                                                                                                                                                                                                                                                                                                                                                                                           |
-| quantity         | string  | (for synced investment transactions only) The quantity as set by Plaid for investment transactions.                                                                                                                                                                                                                                                                                                                                                                                        |
+| Attribute Name             | Type    | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| -------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| id                         | number  | Unique identifier for transaction                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| date                       | string  | Date of transaction in ISO 8601 format                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| payee                      | string  | Name of payee. If recurring_id is not null, this field will show the payee of associated recurring expense instead of the original transaction payee                                                                                                                                                                                                                                                                                                                                       |
+| amount                     | string  | Amount of the transaction in numeric format to 4 decimal places                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| currency                   | string  | Three-letter lowercase currency code of the transaction in ISO 4217 format                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| to_base                    | number  | The amount converted to the user's primary currency. If the multicurrency feature is not being used, to_base and amount will be the same.                                                                                                                                                                                                                                                                                                                                                  |
+| category_id                | number  | Unique identifier of associated category (see Categories)                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| category_name              | string  | Name of category associated with transaction                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| category_group_id          | number  | Unique identifier of associated category group, if any                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| category_group_name        | string  | Name of category group associated with transaction, if any                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| is_income                  | boolean | Based on the associated category's property, denotes if transaction is treated as income                                                                                                                                                                                                                                                                                                                                                                                                   |
+| exclude_from_budget        | boolean | Based on the associated category's property, denotes if transaction is excluded from budget                                                                                                                                                                                                                                                                                                                                                                                                |
+| exclude_from_totals        | boolean | Based on the associated category's property, denotes if transaction is excluded from totals                                                                                                                                                                                                                                                                                                                                                                                                |
+| created_at                 | string  | The date and time of when the transaction was created (in the ISO 8601 extended format).                                                                                                                                                                                                                                                                                                                                                                                                   |
+|                            |
+| updated_at                 | string  | The date and time of when the transaction was last updated (in the ISO 8601 extended format).                                                                                                                                                                                                                                                                                                                                                                                              |
+|                            |
+| status                     | string  | One of the following: <ul> <li>cleared: User has reviewed the transaction</li><li>uncleared: User has not yet reviewed the transaction</li><li>recurring: Transaction is linked to a recurring expense</li><li>recurring_suggested: Transaction is listed as a suggested transaction for an existing recurring expense.</li><li>pending: Imported transaction is marked as pending. This should be a temporary state.</li></ul> User intervention is required to change this to recurring. |
+| is_pending                 | boolean | Denotes if transaction is pending (not posted)                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| notes                      | string  | User-entered transaction notes If recurring_id is not null, this field will be description of associated recurring expense                                                                                                                                                                                                                                                                                                                                                                 |
+| original_name              | string  | The transactions original name before any payee name updates. For synced transactions, this is the raw original payee name from your bank.                                                                                                                                                                                                                                                                                                                                                 |
+| recurring_id               | number  | Unique identifier of associated recurring item                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| recurring_payee            | number  | Payee name of associated recurring item                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| recurring_description      | number  | Description of associated recurring item                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| recurring_cadence          | number  | Cadence of associated recurring item (one of `once a week`, `every 2 weeks`, `twice a month`, `monthly`, `every 2 months`, `every 3 months`, `every 4 months`, `twice a year`, `yearly`)                                                                                                                                                                                                                                                                                                   |
+| recurring_type             | number  | Type of associated recurring (one of `cleared`, `suggested`, `dismissed`)                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| recurring_amount           | number  | Amount of associated recurring item                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| recurring_currency         | number  | Currency of associated recurring item                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| parent_id                  | number  | Exists if this is a split transaction. Denotes the transaction ID of the original transaction. Note that the parent transaction is not returned in this call.                                                                                                                                                                                                                                                                                                                              |
+| has_children               | boolean | True if this transaction is a parent transaction and is split into 2 or more other transactions                                                                                                                                                                                                                                                                                                                                                                                            |
+| group_id                   | number  | Exists if this transaction is part of a group. Denotes the parent’s transaction ID                                                                                                                                                                                                                                                                                                                                                                                                         |
+| is_group                   | boolean | True if this transaction represents a group of transactions. If so, amount and currency represent the totalled amount of transactions bearing this transaction’s id as their group_id. Amount is calculated based on the user’s primary currency.                                                                                                                                                                                                                                          |
+| asset_id                   | number  | Unique identifier of associated manually-managed account (see Assets) Note: plaid_account_id and asset_id cannot both exist for a transaction                                                                                                                                                                                                                                                                                                                                              |
+| asset_institution_name     | number  | Institution name of associated manually-managed account                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| asset_name                 | number  | Name of associated manually-managed account                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| asset_display_name         | number  | Display name of associated manually-managed account                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| asset_status               | number  | Status of associated manually-managed account (one of `active`, `closed`)                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| plaid_account_id           | number  | Unique identifier of associated Plaid account (see Plaid Accounts) Note: plaid_account_id and asset_id cannot both exist for a transaction                                                                                                                                                                                                                                                                                                                                                 |
+| plaid_account_name         | number  | Name of associated Plaid account                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| plaid_account_mask         | number  | Mask of associated Plaid account                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| institution_name           | number  | Institution name of associated Plaid account                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| plaid_account_display_name | number  | Display name of associated Plaid account                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| plaid_metadata             | number  | Metadata associated with imported transaction from Plaid                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| source                     | number  | Source of the transaction (one of `api`, `csv`, `manual`,`merge`,`plaid`,`recurring`,`rule`,`user`)                                                                                                                                                                                                                                                                                                                                                                                        |
+| display_name               | number  | Display name for payee for transaction based on whether or not it is linked to a recurring item. If linked, returns `recurring_payee` field. Otherwise, returns the `payee` field.                                                                                                                                                                                                                                                                                                         |
+| display_notes              | number  | Display notes for transaction based on whether or not it is linked to a recurring item. If linked, returns `recurring_notes` field. Otherwise, returns the `notes` field.                                                                                                                                                                                                                                                                                                                  |
+| account_display_name       | number  | Display name for associated account (manual or Plaid). If this is a synced account, returns `plaid_account_display_name` or `asset_display_name`.                                                                                                                                                                                                                                                                                                                                          |
+| tags                       | Tag[]   | Array of Tag objects                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| external_id                | string  | User-defined external ID for any manually-entered or imported transaction. External ID cannot be accessed or changed for Plaid-imported transactions. External ID must be unique by asset_id. Max 75 characters.                                                                                                                                                                                                                                                                           |
+| original_date              | string  | DEPRECATED                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| type                       | string  | DEPRECATED                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| subtype                    | string  | DEPRECATED                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| fees                       | string  | DEPRECATED                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| price                      | string  | DEPRECATED                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| quantity                   | string  | DEPRECATED                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 
 ## Get All Transactions
 
@@ -37,54 +70,107 @@ Use this endpoint to retrieve all transactions between a date range.
 {
   "transactions": [
     {
-      "id": 602,
-      "date": "2020-01-01",
-      "payee": "Starbucks",
-      "amount": "4.5000",
-      "currency": "cad",
-      "to_base": 4.5,
-      "notes": "Frappuccino",
-      "category_id": null,
-      "recurring_id": null,
-      "asset_id": null,
-      "plaid_account_id": null,
+      "id": 246946944,
+      "date": "2023-07-18",
+      "amount": "53.1900",
+      "currency": "usd",
+      "to_base": 53.19,
+      "payee": "Amazon",
+      "category_id": 315172,
+      "category_name": "Restaurants",
+      "category_group_id": 315358,
+      "category_group_name": "Food & Drink",
+      "is_income": false,
+      "exclude_from_budget": false,
+      "exclude_from_totals": false,
+      "created_at": "2023-09-09T08:43:05.875Z",
+      "updated_at": "2023-10-09T06:07:03.105Z",
       "status": "cleared",
-      "is_group": false,
+      "is_pending": false,
+      "notes": null,
+      "original_name": null,
+      "recurring_id": null,
+      "recurring_payee": null,
+      "recurring_description": null,
+      "recurring_cadence": null,
+      "recurring_type": null,
+      "recurring_amount": null,
+      "recurring_currency": null,
+      "parent_id": 225508713,
+      "has_children": null,
       "group_id": null,
-      "parent_id": null,
-      "external_id": null,
-      "original_name": "STARBUCKS NW 32804",
-      "type": null,
-      "subtype": null,
-      "fees": null,
-      "price": null,
-      "quantity": null
+      "is_group": false,
+      "asset_id": null,
+      "asset_institution_name": null,
+      "asset_name": null,
+      "asset_display_name": null,
+      "asset_status": null,
+      "plaid_account_id": 76602,
+      "plaid_account_name": "Amazon Whole Foods Visa",
+      "plaid_account_mask": "6299",
+      "institution_name": "Chase",
+      "plaid_account_display_name": "Amazon Whole Foods Visa",
+      "plaid_metadata": null,
+      "plaid_category": null,
+      "source": null,
+      "display_name": "Amazon",
+      "display_notes": null,
+      "account_display_name": "Amazon Whole Foods Visa",
+      "tags": [],
+      "external_id": null
     },
     {
-      "id": 603,
-      "date": "2020-01-02",
-      "payee": "Walmart",
-      "amount": "20.9100",
-      "to_base": 20.91,
+      "id": 246946943,
+      "date": "2023-07-18",
+      "amount": "12.2100",
       "currency": "usd",
+      "to_base": 12.21,
+      "payee": "Frelard Tamales",
+      "category_id": 315172,
+      "category_name": "Restaurants",
+      "category_group_id": 315358,
+      "category_group_name": "Food & Drink",
+      "is_income": false,
+      "exclude_from_budget": false,
+      "exclude_from_totals": false,
+      "created_at": "2023-09-09T08:43:05.818Z",
+      "updated_at": "2023-10-09T06:07:03.529Z",
+      "status": "cleared",
+      "is_pending": false,
       "notes": null,
-      "category_id": null,
+      "original_name": null,
       "recurring_id": null,
-      "asset_id": 153,
-      "plaid_account_id": null,
-      "status": "uncleared",
-      "is_group": false,
+      "recurring_payee": null,
+      "recurring_description": null,
+      "recurring_cadence": null,
+      "recurring_type": null,
+      "recurring_amount": null,
+      "recurring_currency": null,
+      "parent_id": 225588844,
+      "has_children": null,
       "group_id": null,
-      "parent_id": null,
-      "external_id": "jf2r3t98o943",
-      "original_name": "Walmart Superstore ON 39208",
-      "type": null,
-      "subtype": null,
-      "fees": null,
-      "price": null,
-      "quantity": null
+      "is_group": false,
+      "asset_id": null,
+      "asset_institution_name": null,
+      "asset_name": null,
+      "asset_display_name": null,
+      "asset_status": null,
+      "plaid_account_id": 54174,
+      "plaid_account_name": "Amex -11005",
+      "plaid_account_mask": "1005",
+      "institution_name": "American Express",
+      "plaid_account_display_name": "Amex Plat",
+      "plaid_metadata": null,
+      "plaid_category": null,
+      "source": null,
+      "display_name": "Frelard Tamales",
+      "display_notes": null,
+      "account_display_name": "Amex Plat",
+      "tags": [],
+      "external_id": null
     }
-  ]
+  ],
+  "has_more": true
 }
 ```
 
@@ -94,7 +180,7 @@ Use this endpoint to retrieve all transactions between a date range.
 { "error": "Both start_date and end_date must be specified." }
 ```
 
-Returns list of Transaction objects. If no query parameters are set, this endpoint will return transactions for the current calendar month (see `start_date` and `end_date`)
+Returns list of Transaction objects and a `has_more` indicator. If no query parameters are set, this endpoint will return transactions for the current calendar month (see `start_date` and `end_date`)
 
 ### HTTP Request
 
@@ -102,22 +188,22 @@ Returns list of Transaction objects. If no query parameters are set, this endpoi
 
 ### Query Parameters
 
-| Parameter         | Type    | Required | Default | Description                                                                                                                                                                                                                                                                  |
-| ----------------- | ------- | -------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| tag_id            | number  | false    | -       | Filter by tag. Only accepts IDs, not names.                                                                                                                                                                                                                                  |
-| recurring_id      | number  | false    | -       | Filter by recurring expense                                                                                                                                                                                                                                                  |
-| plaid_account_id  | number  | false    | -       | Filter by Plaid account                                                                                                                                                                                                                                                      |
-| category_id       | number  | false    | -       | Filter by category. Will also match category groups.                                                                                                                                                                                                                         |
-| asset_id          | number  | false    | -       | Filter by asset                                                                                                                                                                                                                                                              |
-| group_id          | number  | false    | -       | Filter by group_id (if the transaction is part of a specific group)                                                                                                                                                                                                          |
-| is_group          | boolean | false    | -       | Filter by group (returns transaction groups)                                                                                                                                                                                                                                 |
-| status            | string  | false    | -       | Filter by status (Can be `cleared` or `uncleared`. For recurring transactions, use `recurring`)                                                                                                                                                                              |
-| offset            | number  | false    | -       | Sets the offset for the records returned                                                                                                                                                                                                                                     |
-| limit             | number  | false    | -       | Sets the maximum number of records to return. **Note:** The server will not respond with any indication that there are more records to be returned. Please check the response length to determine if you should make another call with an offset to fetch more transactions. |
-| start_date        | string  | false    | -       | Denotes the beginning of the time period to fetch transactions for. Defaults to beginning of current month. Required if end_date exists. Format: YYYY-MM-DD.                                                                                                                 |
-| end_date          | string  | false    | -       | Denotes the end of the time period you'd like to get transactions for. Defaults to end of current month. Required if start_date exists. Format: YYYY-MM-DD.                                                                                                                  |
-| debit_as_negative | boolean | false    | false   | Pass in true if you’d like expenses to be returned as negative amounts and credits as positive amounts. Defaults to false.                                                                                                                                                   |
-| pending           | boolean | false    | false   | Pass in true if you’d like to include imported transactions with a pending status.                                                                                                                                                                                           |
+| Parameter         | Type    | Required | Default | Description                                                                                                                                                  |
+| ----------------- | ------- | -------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| tag_id            | number  | false    | -       | Filter by tag. Only accepts IDs, not names.                                                                                                                  |
+| recurring_id      | number  | false    | -       | Filter by recurring expense                                                                                                                                  |
+| plaid_account_id  | number  | false    | -       | Filter by Plaid account                                                                                                                                      |
+| category_id       | number  | false    | -       | Filter by category. Will also match category groups.                                                                                                         |
+| asset_id          | number  | false    | -       | Filter by asset                                                                                                                                              |
+| is_group          | boolean | false    | -       | Filter by group (returns transaction groups)                                                                                                                 |
+| status            | string  | false    | -       | Filter by status (Can be `cleared` or `uncleared`. For recurring transactions, use `recurring`)                                                              |
+| start_date        | string  | false    | -       | Denotes the beginning of the time period to fetch transactions for. Defaults to beginning of current month. Required if end_date exists. Format: YYYY-MM-DD. |
+| end_date          | string  | false    | -       | Denotes the end of the time period you'd like to get transactions for. Defaults to end of current month. Required if start_date exists. Format: YYYY-MM-DD.  |
+| debit_as_negative | boolean | false    | false   | Pass in true if you’d like expenses to be returned as negative amounts and credits as positive amounts. Defaults to false.                                   |
+| pending           | boolean | false    | false   | Pass in true if you’d like to include imported transactions with a pending status.                                                                           |
+| offset            | number  | false    | -       | Sets the offset for the records returned                                                                                                                     |
+| limit             | number  | false    | 1000    | Sets the maximum number of records to return.                                                                                                                |
+| group_id          | number  | false    | -       | DEPRECATED (Use [GET /v1/transactions-group](#get-transaction-group) instead)                                                                                |
 
 ## Get Single Transaction
 
@@ -127,29 +213,54 @@ Use this endpoint to retrieve details about a specific transaction by ID.
 
 ```json
 {
-  "id": 31,
-  "date": "2019-02-04",
-  "payee": "Shell",
-  "amount": "960.0000",
-  "currency": "jpy",
-  "to_base": 7.48,
-  "notes": null,
-  "category_id": 22,
-  "recurring_id": null,
-  "asset_id": null,
-  "plaid_account_id": null,
+  "id": 480887173,
+  "date": "2023-11-29",
+  "amount": "-14.1800",
+  "currency": "usd",
+  "to_base": -14.18,
+  "payee": "Walmart",
+  "category_id": 315295,
+  "category_name": "Health, Medical",
+  "category_group_id": 315357,
+  "category_group_name": "Personal",
+  "is_income": false,
+  "exclude_from_budget": false,
+  "exclude_from_totals": false,
+  "created_at": "2023-11-30T22:10:57.820Z",
+  "updated_at": "2023-11-30T23:59:56.587Z",
   "status": "cleared",
-  "is_group": false,
-  "group_id": null,
+  "is_pending": false,
+  "notes": null,
+  "original_name": "Walmart",
+  "recurring_id": null,
+  "recurring_payee": null,
+  "recurring_description": null,
+  "recurring_cadence": null,
+  "recurring_type": null,
+  "recurring_amount": null,
+  "recurring_currency": null,
   "parent_id": null,
   "has_children": null,
-  "external_id": null,
-  "original_name": "Shell Gas Station",
-  "type": null,
-  "subtype": null,
-  "fees": null,
-  "price": null,
-  "quantity": null
+  "group_id": 481307164,
+  "is_group": false,
+  "asset_id": null,
+  "asset_institution_name": null,
+  "asset_name": null,
+  "asset_display_name": null,
+  "asset_status": null,
+  "plaid_account_id": 54174,
+  "plaid_account_name": "Amex 1002",
+  "plaid_account_mask": "1005",
+  "institution_name": "American Express",
+  "plaid_account_display_name": "Amex Plat",
+  "plaid_metadata": "{\"account_id\":\"fMKfypkyRXSXvpJor4vPTg6OP7wD4afmEjv6N\",\"account_owner\":\"1005\",\"amount\":-14.18,\"authorized_date\":\"2023-11-28\",\"authorized_datetime\":null,\"category\":[\"Shops\",\"Supermarkets and Groceries\"],\"category_id\":\"19047000\",\"check_number\":null,\"counterparties\":[{\"confidence_level\":\"VERY_HIGH\",\"entity_id\":\"O5W5j4dN9OR3E6ypQmjdkWZZRoXEzVMz2ByWM\",\"logo_url\":\"https://plaid-merchant-logos.plaid.com/walmart_1100.png\",\"name\":\"Walmart\",\"type\":\"merchant\",\"website\":\"walmart.com\"}],\"date\":\"2023-11-29\",\"datetime\":null,\"iso_currency_code\":\"USD\",\"location\":{\"address\":null,\"city\":null,\"country\":null,\"lat\":null,\"lon\":null,\"postal_code\":null,\"region\":null,\"store_number\":null},\"logo_url\":\"https://plaid-merchant-logos.plaid.com/walmart_1100.png\",\"merchant_entity_id\":\"O5W5j4dN9OR3E6ypQmjdkWZZRoXEzVMz2ByWM\",\"merchant_name\":\"Walmart\",\"name\":\"Walmart\",\"payment_channel\":\"other\",\"payment_meta\":{\"by_order_of\":null,\"payee\":null,\"payer\":null,\"payment_method\":null,\"payment_processor\":null,\"ppd_id\":null,\"reason\":null,\"reference_number\":\"320233330735688096\"},\"pending\":false,\"pending_transaction_id\":null,\"personal_finance_category\":{\"confidence_level\":\"VERY_HIGH\",\"detailed\":\"GENERAL_MERCHANDISE_SUPERSTORES\",\"primary\":\"GENERAL_MERCHANDISE\"},\"personal_finance_category_icon_url\":\"https://plaid-category-icons.plaid.com/PFC_GENERAL_MERCHANDISE.png\",\"transaction_code\":null,\"transaction_id\":\"rmQdnefvAndbfHN5mZ4y703C3vdjk7mozCw1OarL\",\"transaction_type\":\"place\",\"unofficial_currency_code\":null,\"website\":\"walmart.com\"}",
+  "plaid_category": "GENERAL_MERCHANDISE_SUPERSTORES",
+  "source": "plaid",
+  "display_name": "Walmart",
+  "display_notes": null,
+  "account_display_name": "Amex Plat",
+  "tags": [],
+  "external_id": null
 }
 ```
 
@@ -331,6 +442,113 @@ Returns an array of IDs of deleted transactions
 | -------------- | ---------------- | -------- | ------- | -------------------------------------------------------------------------------------------------------- |
 | parent_ids     | array of numbers | true     | -       | Array of transaction IDs to unsplit. If one transaction is unsplittable, no transaction will be unsplit. |
 | remove_parents | boolean          | false    | false   | If true, deletes the original parent transaction as well. Note, this is unreversable!                    |
+
+## Get Transaction Group
+
+Use this endpoint to get the parent transaction and associated children transactions of a transaction group.
+
+> Example 200 Response
+
+```json
+{
+  "id": 481307164,
+  "date": "2023-11-29",
+  "amount": "0",
+  "currency": "usd",
+  "to_base": 0,
+  "payee": "Walmart+",
+  "category_id": 315174,
+  "category_name": "General",
+  "category_group_id": 315362,
+  "category_group_name": "Shopping",
+  "is_income": false,
+  "exclude_from_budget": false,
+  "exclude_from_totals": false,
+  "created_at": "2023-11-30T23:59:56.584Z",
+  "updated_at": "2023-11-30T23:59:56.584Z",
+  "status": "cleared",
+  "is_pending": false,
+  "notes": null,
+  "original_name": null,
+  "recurring_id": null,
+  "recurring_payee": null,
+  "recurring_description": null,
+  "recurring_cadence": null,
+  "recurring_type": null,
+  "recurring_amount": null,
+  "recurring_currency": null,
+  "parent_id": null,
+  "has_children": null,
+  "group_id": null,
+  "is_group": true,
+  "asset_id": null,
+  "asset_institution_name": null,
+  "asset_name": null,
+  "asset_display_name": null,
+  "asset_status": null,
+  "plaid_account_id": null,
+  "plaid_account_name": null,
+  "plaid_account_mask": null,
+  "institution_name": null,
+  "plaid_account_display_name": null,
+  "plaid_metadata": null,
+  "plaid_category": null,
+  "source": null,
+  "display_name": "Walmart+",
+  "display_notes": null,
+  "account_display_name": " ",
+  "tags": [],
+  "children": [
+    {
+      "id": 480887173,
+      "payee": "Walmart",
+      "amount": "-14.1800",
+      "currency": "usd",
+      "date": "2023-11-29",
+      "formatted_date": "2023-11-29",
+      "notes": null,
+      "asset_id": null,
+      "plaid_account_id": 54174,
+      "to_base": -14.18
+    },
+    {
+      "id": 480887180,
+      "payee": "Walmart",
+      "amount": "14.1800",
+      "currency": "usd",
+      "date": "2023-11-28",
+      "formatted_date": "2023-11-28",
+      "notes": null,
+      "asset_id": null,
+      "plaid_account_id": 54174,
+      "to_base": 14.18
+    }
+  ],
+  "external_id": null
+}
+```
+
+> Example 404 Response
+
+```json
+{
+  "error": [
+    "Transaction 35360525 is not a transaction group, or part of a transaction group."
+  ]
+}
+```
+
+Returns the hydrated parent transaction of a transaction group
+
+### HTTP Request
+
+`POST https://dev.lunchmoney.app/v1/transactions/group`
+
+### Query Parameters
+
+| Parameter      | Type   | Required | Description                                                                         |
+| -------------- | ------ | -------- | ----------------------------------------------------------------------------------- |
+| transaction_id | number | true     | Transaction ID of either the parent or any of the children in the transaction group |
 
 ## Create Transaction Group
 
