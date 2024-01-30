@@ -7,7 +7,7 @@ Attribute Name                | Type   | Nullable | Description
 id                            | number | false    | Unique identifier of Plaid account
 date_linked                   | string | false    | Date account was first linked in ISO 8601 format
 name                          | string | false    | Name of the account. Can be overridden by the user. Field is originally set by Plaid
-display_name                  | string | false    | Display name of the account, if not set it will return an empty string.
+display_name                  | string | false    | Display name of the account, if not set it will return a concatenated string of institution and account name.
 type                          | string | false    | Primary type of account. Typically one of:<br><ul> <li>credit</li> <li>depository</li> <li>brokerage</li> <li>cash</li> <li>loan</li> <li>Investment</li><ul><br> This field is set by Plaid and cannot be altered
 subtype                       | string | true     | Optional subtype name of account. This field is set by Plaid and cannot be altered
 mask                          | string | false    | Mask (last 3 to 4 digits of account) of account. This field is set by Plaid and cannot be altered
