@@ -2,40 +2,43 @@
 
 ## Budget Object
 
-Attribute Name      | Type   | Nullable | Description
-------------------- | ----   | -------- | -----------
-category_name       | string | false | Name of the category, will be "Uncategorized" if no category is assigned
-category_id         | number | true | Unique identifier for category, can be null when `category_name` is "Uncategorized"
-category_group_name | string | true | Name of the category group, if applicable
-group_id            | number | true | Unique identifier for category group
-is_group            | boolean | true | If true, this category is a group
-is_income           | boolean | false | If true, this category is an income category (category properties are set in the app via the Categories page)
-exclude_from_budget | boolean | false | If true, this category is excluded from budget (category properties are set in the app via the Categories page)
-exclude_from_totals | boolean | false | If true, this category is excluded from totals (category properties are set in the app via the Categories page)
-data                | Array of data objects | false | For each month with budget or category spending data, there is a data object with the key set to the month in format YYYY-MM-DD. For properties, see Data object below.
-config              | object | true | Object representing the category's budget suggestion configuration
+Attribute Name      | Type    | Nullable | Description
+------------------- | ------- | -------- | -----------
+category_name       | string  | false    | Name of the category, will be "Uncategorized" if no category is assigned
+category_id         | number  | true     | Unique identifier for category, can be null when `category_name` is "Uncategorized"
+category_group_name | string  | true     | Name of the category group, if applicable
+group_id            | number  | true     | Unique identifier for category group
+is_group            | boolean | true     | If true, this category is a group
+is_income           | boolean | false    | If true, this category is an income category (category properties are set in the app via the Categories page)
+exclude_from_budget | boolean | false    | If true, this category is excluded from budget (category properties are set in the app via the Categories page)
+exclude_from_totals | boolean | false    | If true, this category is excluded from totals (category properties are set in the app via the Categories page)
+data                | Data[]  | false    | For each month with budget or category spending data, there is a data object with the key set to the month in format YYYY-MM-DD. For properties, see Data object below.
+config              | object  | true     | Object representing the category's budget suggestion configuration
+order               | number  | false    | Numerical ordering of budgets
+archived            | boolean | false    | True if the category is archived and not displayed in relevant areas of the Lunch Money app.
+recurring           | object  | true     | Returns a list object that contains an array of Recurring Expenses objects (just the `payee`, `amount`, `currency`, and `to_base` fields) that affect this budget
 
 ## Data Object
 
-Attribute Name      | Type   | Nullable | Description
-------------------- | ----   | -------- | -----------
-budget_amount       | number | true | The budget amount, as set by the user. If empty, no budget has been set.
-budget_currency     | string | true | The budget currency, as set by the user. If empty, no budget has been set.
-budget_to_base      | number | true | The budget converted to the user's primary currency. If the multicurrency feature is not being used, budget_to_base and budget_amount will be the same. If empty, no budget has been set.
-spending_to_base    | number | false | The total amount spent in this category for this time period in the user's primary currency
-num_transactions    | number | false | Number of transactions that make up "spending_to_base"
-is_automated        | boolean | true | If true, the budget_amount is only a suggestion based on the set config. If not present, it is false (meaning this is a locked in budget)
+Attribute Name      | Type    | Nullable | Description
+------------------- | ------- | -------- | -----------
+budget_amount       | number  | true     | The budget amount, as set by the user. If empty, no budget has been set.
+budget_currency     | string  | true     | The budget currency, as set by the user. If empty, no budget has been set.
+budget_to_base      | number  | true     | The budget converted to the user's primary currency. If the multicurrency feature is not being used, budget_to_base and budget_amount will be the same. If empty, no budget has been set.
+spending_to_base    | number  | false    | The total amount spent in this category for this time period in the user's primary currency
+num_transactions    | number  | false    | Number of transactions that make up "spending_to_base"
+is_automated        | boolean | true     | If true, the budget_amount is only a suggestion based on the set config. If not present, it is false (meaning this is a locked in budget)
 
 ## Config Object
 
 Attribute Name      | Type   | Nullable | Description
-------------------- | ----   | -------- | -----------
-config_id           | number | false | Unique identifier for config
-cadence             | string | false | One of:<br> <ul> <li>monthly</li> <li>twice a month</li> <li>once a week</li> <li>every 3 months</li> <li>every 4 months</li> <li>twice a year</li> <li>yearly</li></ul>
-amount              | number | false | Amount in numeric format
-currency            | string | false | Three-letter lowercase currency code for the recurring expense in ISO 4217 format
-to_base             | number | false | The amount converted to the user's primary currency.
-auto_suggest        | string | false | One of:<br> <ul> <li>budgeted</li> <li>fixed</li> <li>fixed-rollover</li> <li>spent</li> </ul>
+------------------- | ------ | -------- | -----------
+config_id           | number | false    | Unique identifier for config
+cadence             | string | false    | One of:<br> <ul> <li>monthly</li> <li>twice a month</li> <li>once a week</li> <li>every 3 months</li> <li>every 4 months</li> <li>twice a year</li> <li>yearly</li></ul>
+amount              | number | false    | Amount in numeric format
+currency            | string | false    | Three-letter lowercase currency code for the recurring expense in ISO 4217 format
+to_base             | number | false    | The amount converted to the user's primary currency.
+auto_suggest        | string | false    | One of:<br> <ul> <li>budgeted</li> <li>fixed</li> <li>fixed-rollover</li> <li>spent</li> </ul>
 
 ## Get Budget Summary
 
@@ -86,7 +89,9 @@ Use this endpoint to get full details on the budgets for all budgetable categori
             "to_base": 300,
             "auto_suggest": "fixed-rollover"
         },
-        "order": 0
+        "order": 0,
+        "archived": false,
+        "recurring": null
     },
     {
         "category_name": "Alcohol & Bars",
@@ -112,7 +117,18 @@ Use this endpoint to get full details on the budgets for all budgetable categori
             }
         },
         "config": null,
-        "order": 1
+        "archived": false,
+        "order": 1,
+        "recurring": {
+            "list": [
+                {
+                    "payee": "Recurring Payee",
+                    "amount": "20.000",
+                    "currency": "cad",
+                    "to_base": 20
+                }
+            ]
+        }
     }
 ]
 ```
@@ -123,11 +139,11 @@ Use this endpoint to get full details on the budgets for all budgetable categori
 
 ### Query Parameters
 
-Parameter        | Type   | Required | Default | Description
----------        | ----   | -------- | ------- | -----------
-start_date       | string | true    | -       | Start date for the budget period. Lunch Money currently only supports monthly budgets, so your date should be the start of a month (eg. 2021-04-01)
-end_date         | string | true    | -       | End date for the budget period. Lunch Money currently only supports monthly budgets, so your date should be the end of a month (eg. 2021-04-30)
-currency         | string | false    | -       | Currency for the budgeted amount (optional). If empty, will default to your primary currency
+Parameter  | Type   | Required | Default | Description
+---------- | ------ | -------- | ------- | -----------
+start_date | string | true     | -       | Start date for the budget period. Lunch Money currently only supports monthly budgets, so your date should be the start of a month (eg. 2021-04-01)
+end_date   | string | true     | -       | End date for the budget period. Lunch Money currently only supports monthly budgets, so your date should be the end of a month (eg. 2021-04-30)
+currency   | string | false    | -       | Currency for the budgeted amount (optional). If empty, will default to your primary currency
 
 ## Upsert Budget
 
@@ -162,12 +178,12 @@ If this is a sub-category, the response will include the updated category group'
 
 ### Body Parameters
 
-Parameter        | Type   | Required | Default | Description
----------        | ----   | -------- | ------- | -----------
-start_date       | string | true    | -       | Start date for the budget period. Lunch Money currently only supports monthly budgets, so your date must always be the start of a month (eg. 2021-04-01)
-category_id      | number | true    | -       | Unique identifier for the category
-amount           | number | true    | -       | Amount for budget
-currency         | string | false    | -       | Currency for the budgeted amount (optional). If empty, will default to your primary currency
+Parameter   | Type   | Required | Default | Description
+----------- | ------ | -------- | ------- | -----------
+start_date  | string | true     | -       | Start date for the budget period. Lunch Money currently only supports monthly budgets, so your date must always be the start of a month (eg. 2021-04-01)
+category_id | number | true     | -       | Unique identifier for the category
+amount      | number | true     | -       | Amount for budget
+currency    | string | false    | -       | Currency for the budgeted amount (optional). If empty, will default to your primary currency
 
 ## Remove Budget
 
@@ -191,9 +207,9 @@ true
 
 ### Query Parameters
 
-Parameter        | Type   | Required | Default | Description
----------        | ----   | -------- | ------- | -----------
-start_date       | string | true    | -       | Start date for the budget period. Lunch Money currently only supports monthly budgets, so your date must always be the start of a month (eg. 2021-04-01)
-category_id      | number | true    | -       | Unique identifier for the category
+Parameter   | Type   | Required | Default | Description
+----------- | ------ | -------- | ------- | -----------
+start_date  | string | true     | -       | Start date for the budget period. Lunch Money currently only supports monthly budgets, so your date must always be the start of a month (eg. 2021-04-01)
+category_id | number | true     | -       | Unique identifier for the category
 
 ---
