@@ -3,7 +3,7 @@
 ## Plaid Accounts Object
 
 Attribute Name                | Type   | Nullable | Description
------------------------------ | ------ | -------- | ------------------------------------------------------------------------------------------------------------------
+----------------------------- | ------ | -------- | --------------------------------------------------------------------
 id                            | number | false    | Unique identifier of Plaid account
 date_linked                   | string | false    | Date account was first linked in ISO 8601 format
 name                          | string | false    | Name of the account. Can be overridden by the user. Field is originally set by Plaid
