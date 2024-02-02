@@ -542,7 +542,7 @@ Returns the hydrated parent transaction of a transaction group
 
 ### HTTP Request
 
-`POST https://dev.lunchmoney.app/v1/transactions/group`
+`GET https://dev.lunchmoney.app/v1/transactions/group`
 
 ### Query Parameters
 
