@@ -2,22 +2,23 @@
 
 ## Categories Object
 
-| Attribute Name      | Type             | Description                                                                                                                        |
-| ------------------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| id                  | number           | A unique identifier for the category.                                                                                              |
-| name                | string           | The name of the category. Must be between 1 and 40 characters.                                                                     |
-| description         | string           | The description of the category. Must not exceed 140 characters.                                                                   |
-| is_income           | boolean          | If true, the transactions in this category will be treated as income.                                                              |
-| exclude_from_budget | boolean          | If true, the transactions in this category will be excluded from the budget.                                                       |
-| exclude_from_totals | boolean          | If true, the transactions in this category will be excluded from totals.                                                           |
-| archived            | boolean          | If true, the category is archived and not displayed in relevant areas of the Lunch Money app.                                      |
-| archived_on         | string           | The date and time of when the category was last archived (in the ISO 8601 extended format).                                        |
-| updated_at          | string           | The date and time of when the category was last updated (in the ISO 8601 extended format).                                         |
-| created_at          | string           | The date and time of when the category was created (in the ISO 8601 extended format).                                              |
-| is_group            | boolean          | If true, the category is a group that can be a parent to other categories.                                                         |
-| group_id            | number           | The ID of a category group (or null if the category doesn't belong to a category group).                                           |
-| order               | number           | Numerical ordering of categories                                                                                                   |
-| children            | array of objects | For category groups, this will populate with the categories nested within and include id, name, description and created_at fields. |
+Attribute Name      | Type             | Nullable | Description
+------------------- | ---------------- | -------- | --------------------------------------------------------------------
+id                  | number           | false    | A unique identifier for the category.
+name                | string           | false    | The name of the category. Must be between 1 and 40 characters.
+description         | string           | true     | The description of the category. Must not exceed 140 characters.
+is_income           | boolean          | false    | If true, the transactions in this category will be treated as income.
+exclude_from_budget | boolean          | false    | If true, the transactions in this category will be excluded from the budget.
+exclude_from_totals | boolean          | false    | If true, the transactions in this category will be excluded from totals.
+archived            | boolean          | true     | If true, the category is archived and not displayed in relevant areas of the Lunch Money app.
+archived_on         | string           | true     | The date and time of when the category was last archived (in the ISO 8601 extended format).
+updated_at          | string           | true     | The date and time of when the category was last updated (in the ISO 8601 extended format).
+created_at          | string           | true     | The date and time of when the category was created (in the ISO 8601 extended format).
+is_group            | boolean          | false    | If true, the category is a group that can be a parent to other categories.
+group_id            | number           | true     | The ID of a category group (or null if the category doesn't belong to a category group).
+order               | number           | true     | Numerical ordering of categories
+children            | array of objects | true     | For category groups, this will populate with the categories nested within and include id, name, description and created_at fields.
+group_category_name | string           | true     | For grouped categories, the name of the category group
 
 ## Get All Categories
 
@@ -82,9 +83,9 @@ Use this endpoint to get a flattened list of all categories in alphabetical orde
 
 ### Query Parameters
 
-| Parameter | Type   | Required | Default   | Description                                                                                                                                                                                                                                                                                                                      |
-| --------- | ------ | -------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| format    | string | false    | flattened | Can either `flattened` or `nested`. If `flattened`, returns a singular array of categories, ordered alphabetically. If `nested`, returns top-level categories (either category groups or categories not part of a category group) in an array. Subcategories are nested within the category group under the property `children`. |
+Parameter | Type   | Required | Default   | Description
+--------- | ------ | -------- | --------- | --------------------------------------------------------------------------
+format    | string | false    | flattened | Can either `flattened` or `nested`. If `flattened`, returns a singular array of categories, ordered alphabetically. If `nested`, returns top-level categories (either category groups or categories not part of a category group) in an array. Subcategories are nested within the category group under the property `children`.
 
 ## Get Single Category
 
@@ -168,15 +169,15 @@ Use this endpoint to create a single category
 
 `POST https://dev.lunchmoney.app/v1/categories`
 
-| Parameter           | Type    | Required | Default | Description                                                                             |
-| ------------------- | ------- | -------- | ------- | --------------------------------------------------------------------------------------- |
-| name                | string  | true     | -       | Name of category. Must be between 1 and 40 characters.                                  |
-| description         | string  | false    | -       | Description of category. Must be less than 140 categories.                              |
-| is_income           | boolean | false    | false   | Whether or not transactions in this category should be treated as income.               |
-| exclude_from_budget | boolean | false    | false   | Whether or not transactions in this category should be excluded from budgets.           |
-| exclude_from_totals | boolean | false    | false   | Whether or not transactions in this category should be excluded from calculated totals. |
-| archived            | boolean | false    | false   | Whether or not category should be archived.                                             |
-| group_id            | number  | false    | -       | Assigns the newly-created category to an existing category group.                       |
+Parameter           | Type    | Required | Default | Description
+------------------- | ------- | -------- | ------- | -------------------------------------------------------------------
+name                | string  | true     | -       | Name of category. Must be between 1 and 40 characters.
+description         | string  | false    | -       | Description of category. Must be less than 140 categories.
+is_income           | boolean | false    | false   | Whether or not transactions in this category should be treated as income.
+exclude_from_budget | boolean | false    | false   | Whether or not transactions in this category should be excluded from budgets.
+exclude_from_totals | boolean | false    | false   | Whether or not transactions in this category should be excluded from calculated totals.
+archived            | boolean | false    | false   | Whether or not category should be archived.
+group_id            | number  | false    | -       | Assigns the newly-created category to an existing category group.
 
 ## Create Category Group
 
@@ -214,15 +215,15 @@ Use this endpoint to create a single category group
 
 `POST https://dev.lunchmoney.app/v1/categories/group`
 
-| Parameter           | Type             | Required | Default | Description                                                                                            |
-| ------------------- | ---------------- | -------- | ------- | ------------------------------------------------------------------------------------------------------ |
-| name                | string           | true     | -       | Name of category. Must be between 1 and 40 characters.                                                 |
-| description         | string           | false    | -       | Description of category. Must be less than 140 categories.                                             |
-| is_income           | boolean          | false    | false   | Whether or not transactions in this category should be treated as income.                              |
-| exclude_from_budget | boolean          | false    | false   | Whether or not transactions in this category should be excluded from budgets.                          |
-| exclude_from_totals | boolean          | false    | false   | Whether or not transactions in this category should be excluded from calculated totals.                |
-| category_ids        | array of numbers | false    | -       | Array of category_id to include in the category group.                                                 |
-| new_categories      | array of strings | false    | -       | Array of strings representing new categories to create and subsequently include in the category group. |
+Parameter           | Type             | Required | Default | Description
+------------------- | ---------------- | -------- | ------- | ----------------------------------------------------------
+name                | string           | true     | -       | Name of category. Must be between 1 and 40 characters.
+description         | string           | false    | -       | Description of category. Must be less than 140 categories.
+is_income           | boolean          | false    | false   | Whether or not transactions in this category should be treated as income.
+exclude_from_budget | boolean          | false    | false   | Whether or not transactions in this category should be excluded from budgets.
+exclude_from_totals | boolean          | false    | false   | Whether or not transactions in this category should be excluded from calculated totals.
+category_ids        | array of numbers | false    | -       | Array of category_id to include in the category group.
+new_categories      | array of strings | false    | -       | Array of strings representing new categories to create and subsequently include in the category group.
 
 ## Update Category
 
@@ -262,15 +263,15 @@ true
 
 `PUT https://dev.lunchmoney.app/v1/categories/:category_id`
 
-| Parameter           | Type    | Required | Default | Description                                                                             |
-| ------------------- | ------- | -------- | ------- | --------------------------------------------------------------------------------------- |
-| name                | string  | false    | -       | Name of category. Must be between 1 and 40 characters.                                  |
-| description         | string  | false    | -       | Description of category. Must be less than 140 categories.                              |
-| is_income           | boolean | false    | false   | Whether or not transactions in this category should be treated as income.               |
-| exclude_from_budget | boolean | false    | false   | Whether or not transactions in this category should be excluded from budgets.           |
-| exclude_from_totals | boolean | false    | false   | Whether or not transactions in this category should be excluded from calculated totals. |
-| archived            | boolean | false    | false   | Whether or not category should be archived.                                             |
-| group_id            | number  | false    | false   | For a category, set the group_id to include it in a category group                      |
+Parameter           | Type    | Required | Default | Description
+------------------- | ------- | -------- | ------- | -------------------------------------------------------------------
+name                | string  | false    | -       | Name of category. Must be between 1 and 40 characters.
+description         | string  | false    | -       | Description of category. Must be less than 140 categories.
+is_income           | boolean | false    | false   | Whether or not transactions in this category should be treated as income.
+exclude_from_budget | boolean | false    | false   | Whether or not transactions in this category should be excluded from budgets.
+exclude_from_totals | boolean | false    | false   | Whether or not transactions in this category should be excluded from calculated totals.
+archived            | boolean | false    | false   | Whether or not category should be archived.
+group_id            | number  | false    | false   | For a category, set the group_id to include it in a category group
 
 ## Add to Category Group
 
@@ -337,10 +338,10 @@ Use this endpoint to add categories (either existing or new) to a single categor
 
 `POST https://dev.lunchmoney.app/v1/categories/group/:group_id/add`
 
-| Parameter      | Type             | Required | Default | Description                                                                                            |
-| -------------- | ---------------- | -------- | ------- | ------------------------------------------------------------------------------------------------------ |
-| category_ids   | array of numbers | false    | -       | Array of category_id to include in the category group.                                                 |
-| new_categories | array of strings | false    | -       | Array of strings representing new categories to create and subsequently include in the category group. |
+Parameter      | Type             | Required | Default | Description
+-------------- | ---------------- | -------- | ------- | ---------------------------------------------------------------
+category_ids   | array of numbers | false    | -       | Array of category_id to include in the category group.
+new_categories | array of strings | false    | -       | Array of strings representing new categories to create and subsequently include in the category group.
 
 ## Delete Category
 
