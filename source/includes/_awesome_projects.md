@@ -26,6 +26,7 @@ This is a list of awesome open-sourced projects created by the Lunch Money commu
 | Go                                             | [@icco](https://twitter.com/icco)          | [Link](https://github.com/icco/lunchmoney)            |
 | Python                                         | [@juftin](https://github.com/juftin)       | [Link](https://github.com/juftin/lunchable)           |
 | Async client in Kotlin for JVM-based languages | [@smaugfm](https://github.com/smaugfm)     | [Link](https://github.com/smaugfm/lunchmoney)         |
+| Ruby                                           | [@mmenanno](https://github.com/mmenanno)     | [Link](https://github.com/mmenanno/lunchmoney)         |
 
 ## Other
 
