@@ -15,8 +15,9 @@ This is a list of awesome open-sourced projects created by the Lunch Money commu
 | [Wealthsimple](https://wealthsimple.com) Invest, Trade, and Cash balances | [@jamiepinheiro](https://twitter.com/jamiepinheiro) | [Link](https://github.com/jamiepinheiro/lunch_money_wealthsimple_bridge)           |
 | Vehicle & House Prices using KBB, Redfin, and Zillow.                     | [@mike_bianco](https://twitter.com/mike_bianco)     | [Link](https://github.com/iloveitaly/lunchmoney-assets)                            |
 | Categorize Amazon Transactions                                            | [@mike_bianco](https://twitter.com/mike_bianco)     | [Link](https://github.com/iloveitaly/lunchmoney-amazon)                            |
-| [Splitwise](https://www.splitwise.com) transaction                        | [@juftin](https://github.com/juftin)                | [Link](https://github.com/juftin/lunchable/tree/main/lunchable/plugins/splitlunch) |
+| [Splitwise](https://www.splitwise.com) transactions                       | [@juftin](https://github.com/juftin)                | [Link](https://github.com/juftin/lunchable-splitlunch)                             |
 | Rust CLI to sync [Venmo](https://venmo.com) transactions                  | [@emersonford](https://github.com/emersonford)      | [Link](https://github.com/emersonford/lunchmoney-venmo-syncer)                     |
+| Another [Amazon](https://amazon.com) transaction notes updater            | [@juftin](https://github.com/juftin)                | [Link](https://github.com/juftin/lunchable-primelunch)                             |
 
 ## API clients
 
@@ -26,7 +27,7 @@ This is a list of awesome open-sourced projects created by the Lunch Money commu
 | Go                                             | [@icco](https://twitter.com/icco)          | [Link](https://github.com/icco/lunchmoney)            |
 | Python                                         | [@juftin](https://github.com/juftin)       | [Link](https://github.com/juftin/lunchable)           |
 | Async client in Kotlin for JVM-based languages | [@smaugfm](https://github.com/smaugfm)     | [Link](https://github.com/smaugfm/lunchmoney)         |
-| Ruby                                           | [@mmenanno](https://github.com/mmenanno)     | [Link](https://github.com/mmenanno/lunchmoney)         |
+| Ruby                                           | [@mmenanno](https://github.com/mmenanno)   | [Link](https://github.com/mmenanno/lunchmoney)      |
 
 ## Other
 
@@ -38,7 +39,7 @@ This is a list of awesome open-sourced projects created by the Lunch Money commu
 | [Milk Money](https://milkmoney.club/): mobile web quick add                     | [@dareiff](https://github.com/dareiff)              | [Link](https://github.com/dareiff/quick-add)                                         |
 | Scritable iOS Widget for Lunch Money status updates                             | [@amanb014](https://github.com/amanb014)            | [Link](https://github.com/amanb014/lunch-money-widget)                               |
 | Import transaction history from Mint.                                           | [@mike_bianco](https://twitter.com/mike_bianco)     | [Link](https://github.com/iloveitaly/mint-lunchmoney)                                |
-| [Pushover](https://pushover.net) Push Notifications                             | [@juftin](https://github.com/juftin)                | [Link](https://github.com/juftin/lunchable/tree/main/lunchable/plugins/pushlunch)    |
+| [Pushover](https://pushover.net) Push Notifications                             | [@juftin](https://github.com/juftin)                | [Link](https://github.com/juftin/lunchable-/pushlunch)                               |
 
 <aside class="notice">
 Did you create something with the Lunch Money API? Let us know and we'll add it to this list!
