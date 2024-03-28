@@ -2,25 +2,24 @@
 
 ## Recurring Expenses Object
 
-Attribute        | Type   | Nullable | Description
----------------- | ----   | -------- | -----------
-id               | number | false    | Unique identifier for recurring expense
-start_date       | string | true     | Denotes when recurring expense starts occurring in ISO 8601 format. If null, then this recurring expense will show up for all time before end_date
-end_date         | string | true     | Denotes when recurring expense stops occurring in ISO 8601 format. If null, then this recurring expense has no set end date and will show up for all months after start_date
-cadence          | string | false    | One of:<br> <ul> <li>monthly</li> <li>twice a month</li> <li>once a week</li> <li>every 3 months</li> <li>every 4 months</li> <li>twice a year</li> <li>yearly</li></ul>
-payee            | string | false    | Payee of the recurring expense
-amount           | number | false    | Amount of the recurring expense in numeric format to 4 decimal places
-currency         | string | false    | Three-letter lowercase currency code for the recurring expense in ISO 4217 format
-description      | string | true     | If any, represents the user-entered description of the recurring expense
-billing_date     | string | false    | Expected billing date for this recurring expense for this month in ISO 8601 format
-type             | string | false    | This can be one of two values: <br><ul> <li>cleared: The recurring expense has been reviewed by the user</li> <li>suggested: The recurring expense is suggested by the system; the user has yet to review/clear it</li> </ul>
-original_name    | string | true     | If any, represents the original name of the recurring expense as denoted by the transaction that triggered its creation
-source           | string | false    | This can be one of three values:<br> <ul> <li>manual: User created this recurring expense manually from the Recurring Expenses page</li> <li>transaction: User created this by converting a transaction from the Transactions page</li> <li>system: Recurring expense was created by the system on transaction import</li> <li>Some older recurring expenses may not have a source.</li> </ul>
-plaid_account_id | number | true     | If any, denotes the plaid account associated with the creation of this recurring expense (see Plaid Accounts)
-asset_id         | number | true     | If any, denotes the manually-managed account (i.e. asset) associated with the creation of this recurring expense (see Assets)
-transaction_id   | number | true     | If any, denotes the unique identifier for the associated transaction matching this recurring expense for the current time period
-category_id      | number | true     | If any, denotes the unique identifier for the associated category to this recurring expense
-created_at       | string | false    | The date and time of when the recurring expense was created (in the ISO 8601 extended format).
+| Attribute        | Type   | Nullable | Description                                                                                                                                                                                                                                                                                                                                                                                    |
+| ---------------- | ------ | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| id               | number | false    | Unique identifier for recurring expense                                                                                                                                                                                                                                                                                                                                                        |
+| start_date       | string | true     | Denotes when recurring expense starts occurring in ISO 8601 format. If null, then this recurring expense will show up for all time before end_date                                                                                                                                                                                                                                             |
+| end_date         | string | true     | Denotes when recurring expense stops occurring in ISO 8601 format. If null, then this recurring expense has no set end date and will show up for all months after start_date                                                                                                                                                                                                                   |
+| cadence          | string | false    | One of:<br> <ul> <li>monthly</li> <li>twice a month</li> <li>once a week</li> <li>every 3 months</li> <li>every 4 months</li> <li>twice a year</li> <li>yearly</li></ul>                                                                                                                                                                                                                       |
+| payee            | string | false    | Payee of the recurring expense                                                                                                                                                                                                                                                                                                                                                                 |
+| amount           | number | false    | Amount of the recurring expense in numeric format to 4 decimal places                                                                                                                                                                                                                                                                                                                          |
+| currency         | string | false    | Three-letter lowercase currency code for the recurring expense in ISO 4217 format                                                                                                                                                                                                                                                                                                              |
+| description      | string | true     | If any, represents the user-entered description of the recurring expense                                                                                                                                                                                                                                                                                                                       |
+| billing_date     | string | false    | Expected billing date for this recurring expense for this month in ISO 8601 format                                                                                                                                                                                                                                                                                                             |
+| type             | string | false    | This can be one of two values: <br><ul> <li>cleared: The recurring expense has been reviewed by the user</li> <li>suggested: The recurring expense is suggested by the system; the user has yet to review/clear it</li> </ul>                                                                                                                                                                  |
+| original_name    | string | true     | If any, represents the original name of the recurring expense as denoted by the transaction that triggered its creation                                                                                                                                                                                                                                                                        |
+| source           | string | false    | This can be one of three values:<br> <ul> <li>manual: User created this recurring expense manually from the Recurring Expenses page</li> <li>transaction: User created this by converting a transaction from the Transactions page</li> <li>system: Recurring expense was created by the system on transaction import</li> <li>Some older recurring expenses may not have a source.</li> </ul> |
+| plaid_account_id | number | true     | If any, denotes the plaid account associated with the creation of this recurring expense (see Plaid Accounts)                                                                                                                                                                                                                                                                                  |
+| asset_id         | number | true     | If any, denotes the manually-managed account (i.e. asset) associated with the creation of this recurring expense (see Assets)                                                                                                                                                                                                                                                                  |
+| category_id      | number | true     | If any, denotes the unique identifier for the associated category to this recurring expense                                                                                                                                                                                                                                                                                                    |
+| created_at       | string | false    | The date and time of when the recurring expense was created (in the ISO 8601 extended format).                                                                                                                                                                                                                                                                                                 |
 
 ## Get Recurring Expenses
 
@@ -35,7 +34,6 @@ In the same vein, if a recurring expense that began last month is set to “Ever
 > Example 200 Response
 >
 > Returns a list of Recurring Expense objects
-
 
 ```json
 {
@@ -55,8 +53,7 @@ In the same vein, if a recurring expense that began last month is set to “Ever
       "original_name": null,
       "source": "manual",
       "plaid_account_id": null,
-      "asset_id": null,
-      "transaction_id": null
+      "asset_id": null
     },
     {
       "id": 262,
@@ -73,8 +70,7 @@ In the same vein, if a recurring expense that began last month is set to “Ever
       "original_name": null,
       "source": "manual",
       "plaid_account_id": null,
-      "asset_id": null,
-      "transaction_id": null
+      "asset_id": null
     },
     {
       "id": 264,
@@ -91,8 +87,7 @@ In the same vein, if a recurring expense that began last month is set to “Ever
       "original_name": null,
       "source": "manual",
       "plaid_account_id": null,
-      "asset_id": null,
-      "transaction_id": null
+      "asset_id": null
     }
   ]
 }
@@ -108,9 +103,9 @@ In the same vein, if a recurring expense that began last month is set to “Ever
 
 `GET https://dev.lunchmoney.app/v1/recurring_expenses`
 
-Parameter         | Type    | Required | Default                        | Description
----------         | ----    | -------- | -------                        | -----------
-start_date        | string  | false    | First day of the current month | Accepts a string in ISO-8601 short format. Whatever your start date, the system will automatically return recurring expenses expected for that month. For instance, if you input 2020-01-25, the system will return recurring expenses which are to be expected between 2020-01-01 to 2020-01-31.
-debit_as_negative | boolean | false    | false                          | Pass in true if you’d like expenses to be returned as negative amounts and credits as positive amounts.
+| Parameter         | Type    | Required | Default                        | Description                                                                                                                                                                                                                                                                                       |
+| ----------------- | ------- | -------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| start_date        | string  | false    | First day of the current month | Accepts a string in ISO-8601 short format. Whatever your start date, the system will automatically return recurring expenses expected for that month. For instance, if you input 2020-01-25, the system will return recurring expenses which are to be expected between 2020-01-01 to 2020-01-31. |
+| debit_as_negative | boolean | false    | false                          | Pass in true if you’d like expenses to be returned as negative amounts and credits as positive amounts.                                                                                                                                                                                           |
 
 ---
