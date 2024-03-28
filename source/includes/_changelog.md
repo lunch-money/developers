@@ -6,7 +6,8 @@ A log of changes. Breaking changes will be denoted with 🚨
 
 ### Updated
 
-- Deprecated `transaction_id` in [Recurring Expenses Object](#recurring-expenses-object) (temporarily... it will come back in another form)
+- 🚨 Deprecated `transaction_id` in [Recurring Expenses Object](#recurring-expenses-object) (temporarily... it will come back in another form)
+- 🚨 Deprecated special statuses for transactions (`recurring` and `recurring_suggested`)
 - New fields for [Transaction object](#transaction-object) and deprecated query parameter (`group_id`) and fields (`type`, `subtype`, `quantity`, `fee`, `price`)
 
 ## January 18, 2024
