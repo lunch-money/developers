@@ -1,5 +1,7 @@
 # Recurring Expenses
 
+This endpoint has been deprecated in favor of [Recurring Items](#recurring-items)
+
 ## Recurring Expenses Object
 
 | Attribute        | Type   | Nullable | Description                                                                                                                                                                                                                                                                                                                                                                                    |
@@ -23,7 +25,7 @@
 
 ## Get Recurring Expenses
 
-Use this endpoint to retrieve a list of recurring expenses to expect for a specified period.
+It is no longer reccomended to use this endpoint to retrieve a list of recurring expenses to expect for a specified period.  Use the [GET /v1/recurring_items](#get-recurring-items) endpoint instead.
 
 Every month, a different set of recurring expenses is expected. This is because recurring expenses can be once a year, twice a year, every 4 months, etc.
 

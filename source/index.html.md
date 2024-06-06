@@ -16,6 +16,7 @@ includes:
   - tags
   - transactions
   - recurring_expenses
+  - recurring_items
   - budget
   - assets
   - plaid_accounts
