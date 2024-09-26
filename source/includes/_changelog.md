@@ -2,7 +2,7 @@
 
 A log of changes. Breaking changes will be denoted with 🚨
 
-## June X, 2024
+## June 15, 2024
 - New endpoint: [GET /v1/recurring_items](#get-recurring-items)
 - Deprecated the [GET /v1/recurring_expenses](#get-recurring-expenses) endpoint in favor of the new recurring_items endpoint
 
