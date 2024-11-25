@@ -314,7 +314,7 @@ Returns a single Transaction object
 
 ## Insert Transactions
 
-Use this endpoint to insert many transactions at once.
+Use this endpoint to insert one or more transactions at once.   The maximum number of transactions per requests is 500.
 
 > Example 200 Response
 >
