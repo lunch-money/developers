@@ -2,7 +2,7 @@
 
 A log of changes. Breaking changes will be denoted with 🚨
 ## Dec 20, 2024
-- The [Transaction Insert Object](#Transaction-Object-to-Insert) now accepts a `plaid_account_id` allowing developers to update or modify transactions associated with plaid accounts if the "Allow Modifications to Transactions" property is set.
+- The [Transaction Insert Object](#transaction-object-to-insert) now accepts a `plaid_account_id` allowing developers to update or modify transactions associated with plaid accounts if the "Allow Modifications to Transactions" property is set.
 - The bug that prevented users from inserting transactions with the same `asset_id`/`external_id` as a previously deleted transaction has been fixed.
 
 ## June 15, 2024
