@@ -335,7 +335,7 @@ Use this endpoint to insert one or more transactions at once.   The maximum numb
   "error": [
     "Transaction 0 is missing date.",
     "Transaction 0 is missing amount.",
-    "Transaction 1 status must be either cleared or uncleared: null" 
+    "Transaction 1 status must be either cleared or uncleared: null"
   ]
 }
 ```
