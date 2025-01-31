@@ -4,7 +4,9 @@ The developer API is officially in open public beta. Based on feedback received 
 
 During this time, please use this API at your own risk as and be aware that changes made to your data via the API are irreversible.
 
-If you would like to review and provide feedback on the v2 API design in progress, please email our developer advocate at [jp@lunchmoney.app](mailto:jp@lunchmoney.app)
+If you would like to review and provide feedback on the v2 API design in progress, please [email our developer advocate](mailto:jp@lunchmoney.app).
+
+You can also [join the Lunch Money community on Discord](https://lunchmoney.app/discord) and provide feedback in the [Developer API Channel](https://discord.com/channels/842337014556262411/1134594318414389258).
 
 We also welcome general feedback via email [support@lunchmoney.app](mailto:support@lunchmoney.app). 
 
