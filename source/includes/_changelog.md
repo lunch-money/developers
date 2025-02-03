@@ -1,8 +1,12 @@
 # Changelog
 
 A log of changes. Breaking changes will be denoted with 🚨
+## Feb 3, 2024
+- The [Update Transaction Object](#update-transaction-object) now accepts a `plaid_account_id` allowing developers to update existing transactions associated with plaid accounts or to move transactions to a plaid account if the "Allow Modifications to Transactions" property is set.
+- The bug in the [GET /transactions/{id}](#get-single-transaction) endpoint where the `debit_as_negative` query param was ignored has been fixed. 
+
 ## Dec 20, 2024
-- The [Transaction Insert Object](#transaction-object-to-insert) now accepts a `plaid_account_id` allowing developers to update or modify transactions associated with plaid accounts if the "Allow Modifications to Transactions" property is set.
+- The [Transaction Insert Object](#transaction-object-to-insert) now accepts a `plaid_account_id` allowing developers to insert transactions associated with plaid accounts if the "Allow Modifications to Transactions" property is set.
 - The bug that prevented users from inserting transactions with the same `asset_id`/`external_id` as a previously deleted transaction has been fixed.
 
 ## June 15, 2024
