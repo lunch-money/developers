@@ -10,11 +10,12 @@ subtype_name         | string  | true     | Optional asset subtype. Examples inc
 name                 | string  | false    | Name of the asset
 display_name         | string  | true     | Display name of the asset (as set by user)
 balance              | string  | false    | Current balance of the asset in numeric format to 4 decimal places
+to_base              | number  | true     | The balance converted to the user's primary currency
 balance_as_of        | string  | false    | Date/time the balance was last updated in ISO 8601 extended format
 closed_on            | string  | true     | The date this asset was closed (optional)
 currency             | string  | false    | Three-letter lowercase currency code of the balance in ISO 4217 format
 institution_name     | string  | true     | Name of institution holding the asset
-exclude_transactions | boolean | false    | If true, this asset will not show up as an option for assignment when creating transactions manually
+exclude_transactions | boolean | false    | If true, this asset will not show up as an option for assignment when creating transactions manually.
 created_at           | string  | false    | Date/time the asset was created in ISO 8601 extended format
 
 ## Get All Assets
@@ -32,6 +33,7 @@ Use this endpoint to get a list of all manually-managed assets associated with t
       "subtype_name": "physical cash",
       "name": "Test Asset 1",
       "balance": "1201.0100",
+      "to_base": 1020.85,
       "balance_as_of": "2020-01-26T12:27:22.000Z",
       "currency": "cad",
       "institution_name": "Bank of Me",
@@ -44,6 +46,7 @@ Use this endpoint to get a list of all manually-managed assets associated with t
       "subtype_name": "credit card",
       "name": "Test Asset 2",
       "balance": "0.0000",
+      "to_base": 0,
       "balance_as_of": "2020-01-26T12:27:22.000Z",
       "currency": "usd",
       "institution_name": "Bank of You",
@@ -56,6 +59,7 @@ Use this endpoint to get a list of all manually-managed assets associated with t
       "subtype_name": "automobile",
       "name": "Test Asset 3",
       "balance": "99999999999.0000",
+      "to_base": 657179189.99,
       "balance_as_of": "2020-01-26T12:27:22.000Z",
       "currency": "jpy",
       "institution_name": "Bank of Mom",
@@ -68,6 +72,7 @@ Use this endpoint to get a list of all manually-managed assets associated with t
       "subtype_name": null,
       "name": "Test Asset 4",
       "balance": "10101010101.0000",
+      "to_base": 307687460.61,
       "balance_as_of": "2020-01-26T12:27:22.000Z",
       "currency": "twd",
       "institution_name": null,
@@ -96,6 +101,7 @@ Use this endpoint to create a single (manually-managed) asset.
   "name": "My Test Asset",
   "display_name": null,
   "balance": "67.2100",
+  "to_base": 47.05,
   "balance_as_of": "2022-05-29T21:35:36.557Z",
   "closed_on": null,
   "created_at": "2022-05-29T21:35:36.564Z",
@@ -137,6 +143,7 @@ Use this endpoint to update a single asset.
   "subtype_name": "savings",
   "name": "TD Savings Account",
   "balance": "28658.5300",
+  "to_base": 20061.34,
   "balance_as_of": "2020-03-10T05:17:23.856Z",
   "currency": "cad",
   "institution_name": "TD Bank",

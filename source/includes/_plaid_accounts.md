@@ -6,17 +6,18 @@ Attribute Name                | Type   | Nullable | Description
 ----------------------------- | ------ | -------- | --------------------------------------------------------------------
 id                            | number | false    | Unique identifier of Plaid account
 date_linked                   | string | false    | Date account was first linked in ISO 8601 format
-name                          | string | false    | Name of the account. Can be overridden by the user. Field is originally set by Plaid
+name                          | string | false    | Name of the account. Can be overridden by the user. Field is originally set by Plaid.
 display_name                  | string | false    | Display name of the account, if not set it will return a concatenated string of institution and account name.
-type                          | string | false    | Primary type of account. Typically one of:<br><ul> <li>credit</li> <li>depository</li> <li>brokerage</li> <li>cash</li> <li>loan</li> <li>Investment</li><ul><br> This field is set by Plaid and cannot be altered
-subtype                       | string | true     | Optional subtype name of account. This field is set by Plaid and cannot be altered
-mask                          | string | false    | Mask (last 3 to 4 digits of account) of account. This field is set by Plaid and cannot be altered
-institution_name              | string | false    | Name of institution associated with account. This field is set by Plaid and cannot be altered
+type                          | string | false    | Primary type of account. Typically one of:<br><ul> <li>credit</li> <li>depository</li> <li>brokerage</li> <li>cash</li> <li>loan</li> <li>Investment</li><ul><br> This field is set by Plaid and cannot be altered.
+subtype                       | string | true     | Optional subtype name of account. This field is set by Plaid and cannot be altered.
+mask                          | string | false    | Mask (last 3 to 4 digits of account) of account. This field is set by Plaid and cannot be altered.
+institution_name              | string | false    | Name of institution associated with account. This field is set by Plaid and cannot be altered.
 status                        | string | false    | Denotes the current status of the account within Lunch Money. Must be one of:<br><ul> <li>active: Account is active and in good state</li> <li>inactive: Account marked inactive from user. No transactions fetched or balance update for this account.</li> <li>relink: Account needs to be relinked with Plaid.</li> <li>syncing: Account is awaiting first import of transactions</li> <li>error: Account is in error with Plaid</li> <li>not found: Account is in error with Plaid</li> <li>not supported: Account is in error with Plaid</li><ul>
-balance                       | string | false    | Current balance of the account in numeric format to 4 decimal places. This field is set by Plaid and cannot be altered
-currency                      | string | false    | Currency of account balance in ISO 4217 format. This field is set by Plaid and cannot be altered
-balance_last_update           | string | false    | Date balance was last updated in ISO 8601 extended format. This field is set by Plaid and cannot be altered
-limit                         | number | true     | Optional credit limit of the account. This field is set by Plaid and cannot be altered
+balance                       | string | false    | Current balance of the account in numeric format to 4 decimal places. This field is set by Plaid and cannot be altered,
+to_base                       | number | true     | The balance converted to the user's primary currency
+currency                      | string | false    | Currency of account balance in ISO 4217 format. This field is set by Plaid and cannot be altered.
+balance_last_update           | string | false    | Date balance was last updated in ISO 8601 extended format. This field is set by Plaid and cannot be altered.
+limit                         | number | true     | Optional credit limit of the account. This field is set by Plaid and cannot be altered.
 import_start_date             | string | true     | Date of earliest date allowed for importing transactions. Transactions earlier than this date are not imported.
 last_import                   | string | true     | Timestamp in ISO 8601 extended format of the last time Lunch Money imported new data from Plaid for this account.
 last_fetch                    | string | true     | Timestamp in ISO 8601 extended format of the last successful check from Lunch Money for updated data or timestamps from Plaid in ISO 8601 extended format (not necessarily date of last successful import)
@@ -43,6 +44,7 @@ Use this endpoint to get a list of all synced Plaid accounts associated with the
       "status": "inactive",
       "limit": null,
       "balance": "12345.6700",
+      "to_base": 12345.67,
       "currency": "usd",
       "balance_last_update": "2020-01-27T01:38:11.862Z",
       "import_start_date": "2023-01-01",
@@ -62,6 +64,7 @@ Use this endpoint to get a list of all synced Plaid accounts associated with the
       "status": "active",
       "limit": 15000,
       "balance": "0.0000",
+      "to_base": 0,
       "currency": "usd",
       "balance_last_update": "2023-01-27T01:38:07.460Z",
       "import_start_date": "2023-01-01",
