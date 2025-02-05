@@ -36,7 +36,7 @@ Use this endpoint to get a flattened list of all categories in alphabetical orde
       "exclude_from_totals": false,
       "updated_at": "2020-01-28T09:49:03.225Z",
       "created_at": "2020-01-28T09:49:03.225Z",
-      "is_group": true,
+      "is_group": false,
       "group_id": null,
       "order": 0
     },
