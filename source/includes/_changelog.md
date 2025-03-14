@@ -1,10 +1,10 @@
 # Changelog
 
 A log of changes. Breaking changes will be denoted with 🚨
-## Feb 6, 2024
+## Feb 6, 2025
 - The [Assets Object](#assets-object) and [Plaid Accounts Object](#plaid-accounts-object) now include a `to_base` property which shows the account balance converted to the user's primary currency.
 
-## Feb 3, 2024
+## Feb 3, 2025
 - The [Update Transaction Object](#update-transaction-object) now accepts a `plaid_account_id` allowing developers to update existing transactions associated with plaid accounts or to move transactions to a plaid account if the "Allow Modifications to Transactions" property is set.
 - The bug in the [GET /transactions/{id}](#get-single-transaction) endpoint where the `debit_as_negative` query param was ignored has been fixed. 
 
