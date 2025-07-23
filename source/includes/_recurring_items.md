@@ -227,9 +227,10 @@ In the same vein, if a recurring item that began last month is set to “Every 3
 
 `GET https://dev.lunchmoney.app/v1/recurring_items`
 
-| Parameter         | Type    | Required | Default                        | Description                                                                                                                                                                                                                                                                                       |
-| ----------------- | ------- | -------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| start_date        | string  | false    | First day of the current month | Accepts a string in ISO-8601 short format. Whatever your start date, the system will automatically return recurring items expected for that month. For instance, if you input 2020-01-25, the system will return recurring items which are to be expected between 2020-01-01 to 2020-01-31. |
-| debit_as_negative | boolean | false    | false                          | Pass in true if you’d like items to be returned as negative amounts and credits as positive amounts.                                                                                                                                                                                           |
+| Parameter         | Type    | Required | Default                        | Description                                                                                                                                                                   |
+| ----------------- | ------- | -------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| start_date        | string  | false    | First day of the current month | Accepts a string in ISO-8601 short format.  If not set the recurring items for the current month are returned.  If set denotes the starting month of the date range to return |
+| end_date          | string  | false    | none                           | Required if start_date is set.  Must be a date later than start_date.  Denotes the end month of the date range to return                                                      |
+| debit_as_negative | boolean | false    | false                          | Pass in true if you’d like items to be returned as negative amounts and credits as positive amounts.                                                                          |
 
 ---
