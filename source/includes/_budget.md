@@ -1,6 +1,8 @@
 # Budget
 
-The v1/budgets API is deprecated.  Developers are encouraged to migrate their application to the new [v2/summary API](https://alpha.lunchmoney.dev/v2/docs#tag/summary) instead.
+<aside class="notice">
+This API (v1) will not progress to a generally available state. For new projects, we recommend using the <a href="https://alpha.lunchmoney.dev/v2/docs#tag/summary">v2 API</a>, which is in open alpha and actively maintained.
+</aside>
 
 ## Budget Object
 

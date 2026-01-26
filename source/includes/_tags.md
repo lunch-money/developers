@@ -1,5 +1,9 @@
 # Tags
 
+<aside class="notice">
+This API (v1) will not progress to a generally available state. For new projects, we recommend using the <a href="https://alpha.lunchmoney.dev/v2/docs#tag/tags">v2 API</a>, which is in open alpha and actively maintained.
+</aside>
+
 ## Tags Object
 
 Attribute Name      | Type    | Nullable | Description

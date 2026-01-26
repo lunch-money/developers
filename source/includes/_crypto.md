@@ -1,5 +1,9 @@
 # Crypto
 
+<aside class="notice">
+The v2 API does not yet support crypto endpoints. Please continue using the v1 crypto API as documented here.
+</aside>
+
 ## Crypto Object
 
 Attribute Name      | Type   | Nullable | Description

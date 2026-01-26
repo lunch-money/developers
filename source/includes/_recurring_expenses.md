@@ -1,5 +1,9 @@
 # Recurring Expenses
 
+<aside class="notice">
+This API (v1) will not progress to a generally available state. For new projects, we recommend using the <a href="https://alpha.lunchmoney.dev/v2/docs#tag/recurring_items">v2 API</a>, which is in open alpha and actively maintained.
+</aside>
+
 This endpoint has been deprecated in favor of [Recurring Items](#recurring-items)
 
 ## Recurring Expenses Object
