@@ -1,12 +1,13 @@
 # Current Status
 
-The developer API is officially in open public beta. Based on feedback received we have begun design on a v2 API.
+The developer API (v1) is in open public beta and will not progress to a generally available state. We recommend that new users start their projects on the [v2 API](https://alpha.lunchmoney.dev/v2/docs), which is in open alpha and actively maintained. The v2 API is expected to progress to general availability (GA) in early 2026.
 
-During this time, please use this API at your own risk as and be aware that changes made to your data via the API are irreversible.
+If you are an existing API user, we encourage you to review the [v2 migration guide](https://alpha.lunchmoney.dev/v2/migration-guide) to help plan your migration.
 
-If you would like to review and provide feedback on the v2 API design in progress, please [email our developer advocate](mailto:jp@lunchmoney.app).
+Please use this API at your own risk as and be aware that changes made to your data via the API are irreversible.
 
-You can also [join the Lunch Money community on Discord](https://lunchmoney.app/discord) and provide feedback in the [Developer API Channel](https://discord.com/channels/842337014556262411/1134594318414389258).
+
+We invite you to [join the Lunch Money community on Discord](https://lunchmoney.app/discord) and provide feedback in the [Developer API Channel](https://discord.com/channels/842337014556262411/1134594318414389258).
 
 We also welcome general feedback via email [support@lunchmoney.app](mailto:support@lunchmoney.app). 
 

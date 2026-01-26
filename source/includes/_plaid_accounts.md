@@ -1,5 +1,9 @@
 # Plaid Accounts
 
+<aside class="notice">
+This API (v1) will not progress to a generally available state. For new projects, we recommend using the <a href="https://alpha.lunchmoney.dev/v2/docs#tag/plaid_accounts">v2 API</a>, which is in open alpha and actively maintained.
+</aside>
+
 ## Plaid Accounts Object
 
 Attribute Name                | Type   | Nullable | Description
