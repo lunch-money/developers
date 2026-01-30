@@ -92,4 +92,4 @@ module Rouge
               Operator,                         :fg => :bright_pink
       end
     end
-  end
+end
